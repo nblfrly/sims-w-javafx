@@ -1,0 +1,310 @@
+<barangList>
+  <barang>
+    <id>1</id>
+    <namaBarang>Indomie Goreng</namaBarang>
+    <kategori>Mie</kategori>
+    <stok>9</stok>
+    <stokMinimum>8</stokMinimum>
+  </barang>
+  <barang>
+    <id>5</id>
+    <namaBarang>Mi Sedaap Goreng</namaBarang>
+    <kategori>Mie</kategori>
+    <stok>5</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>9</id>
+    <namaBarang>Susu Putih FF Sachet</namaBarang>
+    <kategori>Minuman</kategori>
+    <stok>4</stok>
+    <stokMinimum>6</stokMinimum>
+  </barang>
+  <barang>
+    <id>10</id>
+    <namaBarang>Indomie Soto</namaBarang>
+    <kategori>Mie</kategori>
+    <stok>4</stok>
+    <stokMinimum>6</stokMinimum>
+  </barang>
+  <barang>
+    <id>11</id>
+    <namaBarang>Chitato Sapi Panggang</namaBarang>
+    <kategori>Snack</kategori>
+    <stok>3</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>12</id>
+    <namaBarang>Telur</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>7</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>13</id>
+    <namaBarang>Sosis</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>5</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>14</id>
+    <namaBarang>Indomie Goreng Rendang</namaBarang>
+    <kategori>Mie</kategori>
+    <stok>6</stok>
+    <stokMinimum>6</stokMinimum>
+  </barang>
+  <barang>
+    <id>15</id>
+    <namaBarang>Taro</namaBarang>
+    <kategori>Snack</kategori>
+    <stok>4</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>17</id>
+    <namaBarang>Chitato Lite</namaBarang>
+    <kategori>Snack</kategori>
+    <stok>2</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>18</id>
+    <namaBarang>Teh Botol</namaBarang>
+    <kategori>Minuman</kategori>
+    <stok>3</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>19</id>
+    <namaBarang>Tango</namaBarang>
+    <kategori>Snack</kategori>
+    <stok>5</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>20</id>
+    <namaBarang>Oreo</namaBarang>
+    <kategori>Snack</kategori>
+    <stok>12</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>21</id>
+    <namaBarang>Keju</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>4</stok>
+    <stokMinimum>4</stokMinimum>
+  </barang>
+  <barang>
+    <id>22</id>
+    <namaBarang>Bakso</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>6</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>23</id>
+    <namaBarang>Indomie Kari</namaBarang>
+    <kategori>Mie</kategori>
+    <stok>4</stok>
+    <stokMinimum>4</stokMinimum>
+  </barang>
+  <barang>
+    <id>24</id>
+    <namaBarang>Susu Coklat FF Sachet</namaBarang>
+    <kategori>Minuman</kategori>
+    <stok>8</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>25</id>
+    <namaBarang>Sarimi Isi 2</namaBarang>
+    <kategori>Mie</kategori>
+    <stok>4</stok>
+    <stokMinimum>3</stokMinimum>
+  </barang>
+  <barang>
+    <id>26</id>
+    <namaBarang>Beng-Beng</namaBarang>
+    <kategori>Snack</kategori>
+    <stok>6</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>27</id>
+    <namaBarang>Kopi Kapal Api</namaBarang>
+    <kategori>Minuman</kategori>
+    <stok>6</stok>
+    <stokMinimum>4</stokMinimum>
+  </barang>
+  <barang>
+    <id>28</id>
+    <namaBarang>Good Day Cappucino</namaBarang>
+    <kategori>Minuman</kategori>
+    <stok>4</stok>
+    <stokMinimum>3</stokMinimum>
+  </barang>
+  <barang>
+    <id>29</id>
+    <namaBarang>Mie Sedaap Ayam Bawang</namaBarang>
+    <kategori>Mie</kategori>
+    <stok>4</stok>
+    <stokMinimum>3</stokMinimum>
+  </barang>
+  <barang>
+    <id>30</id>
+    <namaBarang>Pocari Sweat</namaBarang>
+    <kategori>Minuman</kategori>
+    <stok>3</stok>
+    <stokMinimum>3</stokMinimum>
+  </barang>
+  <barang>
+    <id>31</id>
+    <namaBarang>Teh Botol Sosro</namaBarang>
+    <kategori>Minuman</kategori>
+    <stok>5</stok>
+    <stokMinimum>4</stokMinimum>
+  </barang>
+  <barang>
+    <id>32</id>
+    <namaBarang>Cabai Rawit</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>6</stok>
+    <stokMinimum>4</stokMinimum>
+  </barang>
+  <barang>
+    <id>33</id>
+    <namaBarang>Nugget</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>3</stok>
+    <stokMinimum>3</stokMinimum>
+  </barang>
+  <barang>
+    <id>34</id>
+    <namaBarang>Indomie Goreng Aceh</namaBarang>
+    <kategori>Mie</kategori>
+    <stok>4</stok>
+    <stokMinimum>3</stokMinimum>
+  </barang>
+  <barang>
+    <id>35</id>
+    <namaBarang>Indomie Cabe Ijo</namaBarang>
+    <kategori>Mie</kategori>
+    <stok>3</stok>
+    <stokMinimum>3</stokMinimum>
+  </barang>
+  <barang>
+    <id>36</id>
+    <namaBarang>Energen Coklat</namaBarang>
+    <kategori>Minuman</kategori>
+    <stok>6</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>37</id>
+    <namaBarang>Bawang Goreng</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>4</stok>
+    <stokMinimum>6</stokMinimum>
+  </barang>
+  <barang>
+    <id>38</id>
+    <namaBarang>Saus Sambal</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>3</stok>
+    <stokMinimum>2</stokMinimum>
+  </barang>
+  <barang>
+    <id>39</id>
+    <namaBarang>Ayam Suwir</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>4</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>40</id>
+    <namaBarang>Pop Mie Ayam</namaBarang>
+    <kategori>Mie</kategori>
+    <stok>7</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>41</id>
+    <namaBarang>Daun Bawang</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>6</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>42</id>
+    <namaBarang>Tepung Terigu</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>3</stok>
+    <stokMinimum>2</stokMinimum>
+  </barang>
+  <barang>
+    <id>43</id>
+    <namaBarang>Pop Mie Sedaap Goreng</namaBarang>
+    <kategori>Mie</kategori>
+    <stok>3</stok>
+    <stokMinimum>2</stokMinimum>
+  </barang>
+  <barang>
+    <id>44</id>
+    <namaBarang>Kornet Sapi</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>4</stok>
+    <stokMinimum>3</stokMinimum>
+  </barang>
+  <barang>
+    <id>45</id>
+    <namaBarang>Otak-Otak</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>5</stok>
+    <stokMinimum>3</stokMinimum>
+  </barang>
+  <barang>
+    <id>46</id>
+    <namaBarang>Bumbu Masako</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>7</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>47</id>
+    <namaBarang>Bumbu Garam</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>5</stok>
+    <stokMinimum>4</stokMinimum>
+  </barang>
+  <barang>
+    <id>48</id>
+    <namaBarang>Bawang Putih</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>7</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>51</id>
+    <namaBarang>Bumbu Ladaku</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>5</stok>
+    <stokMinimum>4</stokMinimum>
+  </barang>
+  <barang>
+    <id>52</id>
+    <namaBarang>Meses Coklat</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>5</stok>
+    <stokMinimum>4</stokMinimum>
+  </barang>
+  <barang>
+    <id>53</id>
+    <namaBarang>Aqua</namaBarang>
+    <kategori>Minuman</kategori>
+    <stok>6</stok>
+    <stokMinimum>4</stokMinimum>
+  </barang>
+</barangList>

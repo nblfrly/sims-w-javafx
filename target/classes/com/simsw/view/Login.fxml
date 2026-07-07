@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color:#F5F5F5;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simsw.controller.LoginController">
+
+    <!-- ================= HEADER ================= -->
+
+    <top>
+
+        <HBox alignment="CENTER_LEFT" prefHeight="70" style="-fx-background-color:#C62828;">
+
+            <padding>
+                <Insets left="20" right="20" />
+            </padding>
+
+            <children>
+
+                <Label text="SIMS-W : WARMINDO STOCK MANAGER" textFill="WHITE">
+
+                    <font>
+                        <Font size="24" />
+                    </font>
+
+                </Label>
+
+            </children>
+
+        </HBox>
+
+    </top>
+
+    <!-- ================= BODY ================= -->
+
+    <center>
+
+        <HBox alignment="CENTER" spacing="60">
+
+            <padding>
+                <Insets bottom="20" left="40" right="40" top="20" />
+            </padding>
+
+            <children>
+
+                <!-- ================= LEFT ================= -->
+
+                <VBox alignment="CENTER" prefWidth="420" spacing="15">
+
+                    <children>
+
+                        <!-- Ganti logo.png dengan logo milik kalian -->
+                        <ImageView fitHeight="220" fitWidth="220" preserveRatio="true" smooth="true" cache="true">
+
+                            <image>
+                                <!-- <Image url="@../image/logo1.png" /> -->
+                            </image>
+
+                        </ImageView>
+
+                        <Label text="SIMS-W">
+
+                            <font>
+                                <Font size="40" />
+                            </font>
+
+                            <style>
+                                -fx-font-weight:bold;
+                                -fx-text-fill:#C62828;
+                            </style>
+
+                        </Label>
+
+                        <Label text="Warmindo Stock Manager">
+
+                            <font>
+                                <Font size="22" />
+                            </font>
+
+                            <style>
+                                -fx-font-weight:bold;
+                                -fx-text-fill:#444444;
+                            </style>
+
+                        </Label>
+
+                        <Label alignment="CENTER" text="Kelola stok inventaris Warmindo&#10;dengan mudah dan efisien ☺" textAlignment="CENTER" wrapText="true">
+
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+
+                            <style>
+                                -fx-text-fill:#666666;
+                            </style>
+
+                        </Label>
+
+                    </children>
+
+                </VBox>
+
+                <!-- ================= RIGHT ================= -->
+
+                <VBox alignment="CENTER" maxWidth="420" prefWidth="420" spacing="18" style="-fx-background-color:white;                              -fx-background-radius:12;                              -fx-border-radius:12;                              -fx-border-color:#DDDDDD;">
+
+                    <padding>
+                        <Insets bottom="35" left="35" right="35" top="35" />
+                    </padding>
+
+                    <children>
+
+                        <Label text="LOGIN">
+
+                            <font>
+                                <Font size="30" />
+                            </font>
+
+                            <style>
+                                -fx-font-weight:bold;
+                            </style>
+
+                        </Label>
+
+                        <Label style="-fx-text-fill:#666666;" text="Silahkan login untuk melanjutkan." />
+
+                        <Region prefHeight="5" />
+
+                        <VBox spacing="5">
+
+                            <children>
+
+                                <Label text="Username" />
+
+                                <TextField fx:id="txtUsername" prefHeight="40" promptText="Masukkan username" />
+
+                            </children>
+
+                        </VBox>
+
+                        <VBox spacing="5">
+
+                            <children>
+
+                                <Label text="Password" />
+
+                                <PasswordField fx:id="txtPassword" prefHeight="40" promptText="Masukkan password" />
+
+                            </children>
+
+                        </VBox>
+
+                        <Region prefHeight="5" />
+
+                        <Button fx:id="btnLogin" onAction="#handleLogin" prefHeight="45" prefWidth="320" style="-fx-background-color:#C62828;                                        -fx-text-fill:white;                                        -fx-font-weight:bold;                                        -fx-font-size:14px;                                        -fx-background-radius:8;" text="LOGIN" />
+
+                    </children>
+
+                </VBox>
+
+            </children>
+
+        </HBox>
+
+    </center>
+
+</BorderPane>

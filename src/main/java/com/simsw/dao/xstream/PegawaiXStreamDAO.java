@@ -103,7 +103,7 @@ public class PegawaiXStreamDAO {
             return false;
         }
     }
-//woiwoisadasd
+
     // DELETE coba sssslagi ya
     public boolean deletePegawai(int id) {
         try {

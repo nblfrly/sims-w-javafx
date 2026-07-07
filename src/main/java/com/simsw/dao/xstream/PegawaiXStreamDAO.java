@@ -103,8 +103,8 @@ public class PegawaiXStreamDAO {
             return false;
         }
     }
-
-    // DELETE
+//woiwoisadasd
+    // DELETE coba sssslagi ya
     public boolean deletePegawai(int id) {
         try {
             List<Pegawai> list = loadPegawai();

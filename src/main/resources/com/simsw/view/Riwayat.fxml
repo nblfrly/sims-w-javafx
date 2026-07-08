@@ -94,7 +94,7 @@
                   <Label style="-fx-font-weight: bold;" text="Daftar Mutasi Perubahan Stok &amp; Harga" />
                </children>
             </HBox>
-            <TableView fx:id="historyTable" prefHeight="457.0" prefWidth="599.0" VBox.vgrow="ALWAYS">
+            <TableView fx:id="riwayatTable" prefHeight="457.0" prefWidth="599.0" VBox.vgrow="ALWAYS">
               <columns>
                 <TableColumn fx:id="colTimestamp" prefWidth="134.6666864156723" text="Waktu" />
                 <TableColumn fx:id="colItem" prefWidth="193.99996948242188" text="Nama Item" />

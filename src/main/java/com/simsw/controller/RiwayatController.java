@@ -44,7 +44,7 @@ public class RiwayatController {
     private TextField filterRiwayatTxt;
 
     @FXML
-    private TableView<?> historyTable;
+    private TableView<?> riwayatTable;
 
     @FXML
     private ComboBox<?> kategoriFilter;
@@ -66,5 +66,9 @@ public class RiwayatController {
         stage.setTitle("Dashboard");
         stage.show();
     }
+
+
+
+
 }
 

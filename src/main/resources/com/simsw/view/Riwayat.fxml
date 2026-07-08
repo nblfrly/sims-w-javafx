@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simsw.controller.RiwayatController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simsw.controller.RiwayatController">
    <top>
        <HBox alignment="CENTER_LEFT" prefHeight="70.0" spacing="15" style="-fx-background-color: #D32F2F;" BorderPane.alignment="CENTER">
            <padding>
@@ -70,12 +70,12 @@
                <children>
                   <Button fx:id="resetFilterRiwayat" mnemonicParsing="false" prefHeight="35.0" prefWidth="256.0" style="-fx-background-color: #F57C00;" text="Reset Filter" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
                   <Button fx:id="exportRiwayat" mnemonicParsing="false" prefHeight="35.0" prefWidth="256.0" style="-fx-background-color: #388E3C;" text="Export to Excel" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
                </children>
@@ -94,13 +94,13 @@
                   <Label style="-fx-font-weight: bold;" text="Daftar Mutasi Perubahan Stok &amp; Harga" />
                </children>
             </HBox>
-            <TableView fx:id="historyTable" prefHeight="457.0" prefWidth="599.0" VBox.vgrow="ALWAYS">
+            <TableView fx:id="riwayatTable" prefHeight="457.0" prefWidth="599.0" VBox.vgrow="ALWAYS">
               <columns>
                 <TableColumn fx:id="colTimestamp" prefWidth="134.6666864156723" text="Waktu" />
                 <TableColumn fx:id="colItem" prefWidth="193.99996948242188" text="Nama Item" />
                   <TableColumn fx:id="colOldValue" prefWidth="85.0" text="Sebelum" />
                   <TableColumn fx:id="colNewValue" prefWidth="85.0" text="Sesudah" />
-                  <TableColumn fx:id="colPegawai" prefWidth="156.0" text="Pegawai" />
+                  <TableColumn fx:id="colNama" prefWidth="156.0" text="Nama" />
                   <TableColumn fx:id="colKeterangan" prefWidth="261.99993896484375" text="Keterangan Log" />
               </columns>
             </TableView>

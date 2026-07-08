@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="700.0"
+            prefWidth="1000.0"
+            xmlns="http://javafx.com/javafx/26"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.simsw.controller.RiwayatController">
+
+    <!-- ================= HEADER ================= -->
+
+    <top>
+        <HBox spacing="15"
+              alignment="CENTER_LEFT"
+              prefHeight="70"
+              style="-fx-background-color:#D32F2F;">
+
+            <padding>
+                <Insets left="20" right="20"/>
+            </padding>
+
+            <children>
+
+                <Button fx:id="btnDashboard"
+                        text="🏠 Dashboard"
+                        onAction="#backDashboard"
+                        style="-fx-background-color:white;
+                               -fx-text-fill:#D32F2F;
+                               -fx-font-weight:bold;
+                               -fx-background-radius:8;"/>
+
+                <Label text="SIMS-W | Riwayat Perubahan Inventaris"
+                       textFill="WHITE">
+
+                    <font>
+                        <Font size="24"/>
+                    </font>
+
+                </Label>
+
+            </children>
+
+        </HBox>
+    </top>
+
+    <!-- ================= CONTENT ================= -->
+
+    <center>
+
+        <VBox spacing="18"
+              style="-fx-background-color:#F4F6F9;">
+
+            <padding>
+                <Insets top="20"
+                        left="18"
+                        right="18"
+                        bottom="18"/>
+            </padding>
+
+            <!-- ================= CARD ================= -->
+
+            <HBox spacing="15">
+
+                <children>
+
+                    <VBox spacing="6"
+                          prefWidth="240"
+                          style="-fx-background-color:white;
+                                 -fx-background-radius:10;
+                                 -fx-border-color:#DDDDDD;
+                                 -fx-border-radius:10;">
+
+                        <padding>
+                            <Insets top="15" left="15" bottom="15"/>
+                        </padding>
+
+                        <children>
+
+                            <Label text="Total Log"/>
+
+                            <Label fx:id="lblTotalLog"
+                                   text="0">
+
+                                <font>
+                                    <Font size="28"/>
+                                </font>
+
+                            </Label>
+
+                        </children>
+
+                    </VBox>
+
+                    <VBox spacing="6"
+                          prefWidth="240"
+                          style="-fx-background-color:white;
+                                 -fx-background-radius:10;
+                                 -fx-border-color:#DDDDDD;
+                                 -fx-border-radius:10;">
+
+                        <padding>
+                            <Insets top="15" left="15" bottom="15"/>
+                        </padding>
+
+                        <children>
+
+                            <Label text="Tambah Barang"/>
+
+                            <Label fx:id="lblTambah"
+                                   text="0">
+
+                                <font>
+                                    <Font size="28"/>
+                                </font>
+
+                            </Label>
+
+                        </children>
+
+                    </VBox>
+
+                    <VBox spacing="6"
+                          prefWidth="240"
+                          style="-fx-background-color:white;
+                                 -fx-background-radius:10;
+                                 -fx-border-color:#DDDDDD;
+                                 -fx-border-radius:10;">
+
+                        <padding>
+                            <Insets top="15" left="15" bottom="15"/>
+                        </padding>
+
+                        <children>
+
+                            <Label text="Update Barang"/>
+
+                            <Label fx:id="lblUpdate"
+                                   text="0">
+
+                                <font>
+                                    <Font size="28"/>
+                                </font>
+
+                            </Label>
+
+                        </children>
+
+                    </VBox>
+
+                    <VBox spacing="6"
+                          prefWidth="240"
+                          style="-fx-background-color:white;
+                                 -fx-background-radius:10;
+                                 -fx-border-color:#DDDDDD;
+                                 -fx-border-radius:10;">
+
+                        <padding>
+                            <Insets top="15" left="15" bottom="15"/>
+                        </padding>
+
+                        <children>
+
+                            <Label text="Hapus Barang"/>
+
+                            <Label fx:id="lblHapus"
+                                   text="0">
+
+                                <font>
+                                    <Font size="28"/>
+                                </font>
+
+                            </Label>
+
+                        </children>
+
+                    </VBox>
+
+                </children>
+
+            </HBox>
+
+            <!-- ================= FILTER ================= -->
+
+            <Label text="Filter Riwayat">
+
+                <font>
+                    <Font name="System Bold" size="16"/>
+                </font>
+
+            </Label>
+
+            <HBox spacing="12"
+                  alignment="BOTTOM_LEFT">
+
+                <children>
+
+                    <VBox spacing="5">
+
+                        <children>
+
+                            <Label text="Tanggal"/>
+
+                            <DatePicker fx:id="tanggalFilter"
+                                        prefWidth="180"/>
+
+                        </children>
+
+                    </VBox>
+
+                    <VBox spacing="5">
+
+                        <children>
+
+                            <Label text="Aktivitas"/>
+
+                            <ComboBox fx:id="aktivitasFilter"
+                                      prefWidth="180"
+                                      promptText="Semua Aktivitas"/>
+
+                        </children>
+
+                    </VBox>
+
+                    <VBox spacing="5"
+                          HBox.hgrow="ALWAYS">
+
+                        <children>
+
+                            <Label text="Cari Barang / User"/>
+
+                            <TextField fx:id="txtCari"
+                                       promptText="🔍 Cari barang atau user..."
+                                       prefWidth="320"/>
+
+                        </children>
+
+                    </VBox>
+
+                    <Button fx:id="btnReset"
+                            text="Reset Filter"
+                            prefWidth="140"
+                            style="-fx-background-color:#F57C00;
+                                   -fx-text-fill:white;
+                                   -fx-font-weight:bold;
+                                   -fx-background-radius:8;"/>
+
+                    <Button fx:id="btnExport"
+                            text="Export Excel"
+                            prefWidth="140"
+                            style="-fx-background-color:#388E3C;
+                                   -fx-text-fill:white;
+                                   -fx-font-weight:bold;
+                                   -fx-background-radius:8;"/>
+
+                </children>
+
+            </HBox>
+
+            <!-- ================= TABLE ================= -->
+
+            <Label text="Audit Log Inventaris">
+
+                <font>
+                    <Font name="System Bold" size="16"/>
+                </font>
+
+            </Label>
+
+            <TableView fx:id="tableRiwayat"
+                       VBox.vgrow="ALWAYS">
+
+                <columns>
+
+                    <TableColumn fx:id="colWaktu"
+                                 prefWidth="185"
+                                 text="Waktu"/>
+
+                    <TableColumn fx:id="colAktivitas"
+                                 prefWidth="150"
+                                 text="Aktivitas"/>
+
+                    <TableColumn fx:id="colBarang"
+                                 prefWidth="250"
+                                 text="Nama Barang"/>
+
+                    <TableColumn fx:id="colStokLama"
+                                 prefWidth="100"
+                                 text="Stok Lama"/>
+
+                    <TableColumn fx:id="colStokBaru"
+                                 prefWidth="100"
+                                 text="Stok Baru"/>
+
+                    <TableColumn fx:id="colUser"
+                                 prefWidth="180"
+                                 text="User"/>
+
+                </columns>
+
+                <placeholder>
+                    <Label text="Belum ada aktivitas yang tercatat."/>
+                </placeholder>
+
+            </TableView>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

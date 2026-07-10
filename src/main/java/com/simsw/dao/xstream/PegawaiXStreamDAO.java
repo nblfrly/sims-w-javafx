@@ -42,7 +42,7 @@ public class PegawaiXStreamDAO {
     private List<Pegawai> loadPegawai() {
         try {
             File file = new File(XML_PATH);
-            if (!file.exists()) {
+            if (!file.exists() || file.length() == 0) {
                 return new ArrayList<>();
             }
 

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="700" prefWidth="1000" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simsw.controller.MenuController">
+
+    <!-- ================= HEADER ================= -->
+
+    <top>
+
+        <HBox alignment="CENTER_LEFT" prefHeight="70" spacing="15" style="-fx-background-color:#C62828;">
+
+            <padding>
+                <Insets left="20" right="20" />
+            </padding>
+
+            <children>
+
+                <Button fx:id="btnDashboard" onAction="#backDashboard" style="-fx-background-color:white;                            -fx-text-fill:#C62828;                            -fx-font-weight:bold;" text="🏠 Dashboard" />
+
+                <Label text="WarMis | Menu Warmindo" textFill="WHITE">
+
+                    <font>
+                        <Font size="24" />
+                    </font>
+
+                </Label>
+
+            </children>
+
+        </HBox>
+
+    </top>
+
+    <!-- ================= LEFT ================= -->
+
+    <left>
+
+                          <VBox prefWidth="300.0" spacing="15" style="-fx-background-color:#F5F5F5;">
+
+                              <padding>
+                <Insets bottom="20" left="15" right="15" top="20" />
+            </padding>
+
+                              <children>
+
+                                  <Label text="Detail Menu">
+
+                                      <font>
+                        <Font size="17" />
+                    </font>
+
+                                  </Label>
+
+                                  <VBox spacing="5">
+
+                                      <Label text="Nama Menu" />
+
+                                      <TextField fx:id="txtNamaMenu" promptText="Contoh: Indomie Goreng" />
+
+                                  </VBox>
+
+                                  <VBox spacing="5">
+
+                                      <Label text="Harga" />
+
+                                      <TextField fx:id="txtHarga" promptText="12000" />
+
+                                  </VBox>
+
+                                  <VBox spacing="5">
+
+                                      <Label text="Kategori" />
+
+                                      <ComboBox fx:id="cmbKategori" prefWidth="250" />
+
+                                  </VBox>
+
+                                  <VBox spacing="5">
+
+                                      <Label text="Status" />
+
+                                      <ComboBox fx:id="cmbStatus" prefWidth="250" />
+
+                                  </VBox>
+
+                                  <Separator />
+
+                                  <Button fx:id="btnTambah" prefHeight="38" prefWidth="265.0" style="-fx-background-color:#388E3C;                            -fx-text-fill:white;" text="Tambah / Update Menu" />
+
+                                  <Button fx:id="btnDelete" prefHeight="38" prefWidth="265.0" style="-fx-background-color:#D32F2F;                            -fx-text-fill:white;" text="Hapus Menu" />
+
+                                  <Button fx:id="btnReset" prefHeight="38" text="Reset Form" />
+
+                              </children>
+
+                          </VBox>
+
+    </left>
+
+    <!-- ================= CENTER ================= -->
+
+    <center>
+
+        <VBox spacing="10">
+
+            <padding>
+
+                <Insets bottom="15" left="15" right="15" top="15" />
+
+            </padding>
+
+            <children>
+
+                <HBox spacing="10">
+
+                    <children>
+
+                        <Label text="Search Menu" />
+      
+                              <TextField fx:id="txtSearch" prefWidth="320" promptText="Cari nama menu..." />
+
+                    </children>
+
+                </HBox>
+
+                            <TableView fx:id="tableMenu" VBox.vgrow="ALWAYS">
+
+                                <columns>
+
+                                    <TableColumn fx:id="colId" prefWidth="60" text="ID" />
+
+                                    <TableColumn fx:id="colNama" prefWidth="260" text="Nama Menu" />
+
+                                    <TableColumn fx:id="colKategori" prefWidth="140" text="Kategori" />
+
+                                    <TableColumn fx:id="colHarga" prefWidth="130" text="Harga" />
+
+                                    <TableColumn fx:id="colStatus" prefWidth="120" text="Status" />
+
+                                </columns>
+
+                            </TableView>
+
+            </children>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

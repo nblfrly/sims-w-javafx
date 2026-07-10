@@ -1,0 +1,245 @@
+<riwayatList>
+  <riwayat>
+    <id>27</id>
+    <waktu>10-07-2026 21:55:22</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Gula</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>6</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>26</id>
+    <waktu>10-07-2026 21:55:03</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Teh</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>5</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>25</id>
+    <waktu>10-07-2026 21:53:42</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Sawi</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>5</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>24</id>
+    <waktu>10-07-2026 21:13:54</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Keju</namaBarang>
+    <stokLama>4</stokLama>
+    <stokBaru>4</stokBaru>
+    <user>Rapi (Pegawai)</user>
+  </riwayat>
+  <riwayat>
+    <id>23</id>
+    <waktu>10-07-2026 15:02:58</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Indomie Kari</namaBarang>
+    <stokLama>4</stokLama>
+    <stokBaru>5</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>22</id>
+    <waktu>10-07-2026 14:07:08</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Otak-Otak</namaBarang>
+    <stokLama>5</stokLama>
+    <stokBaru>4</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>21</id>
+    <waktu>08-07-2026 22:14:41</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Kornet Sapi</namaBarang>
+    <stokLama>4</stokLama>
+    <stokBaru>3</stokBaru>
+    <user>Adnan (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>20</id>
+    <waktu>08-07-2026 20:26:29</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Cukai</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>5</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>19</id>
+    <waktu>08-07-2026 20:12:41</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Mentega</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>5</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>18</id>
+    <waktu>08-07-2026 19:33:41</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Aqua</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>5</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>17</id>
+    <waktu>08-07-2026 19:32:49</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Indomie Cabe Ijo</namaBarang>
+    <stokLama>5</stokLama>
+    <stokBaru>3</stokBaru>
+    <user>Adnan (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>16</id>
+    <waktu>08-07-2026 19:32:22</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Bumbu Masako</namaBarang>
+    <stokLama>7</stokLama>
+    <stokBaru>4</stokBaru>
+    <user>Adnan (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>15</id>
+    <waktu>07-07-2026 17:23:02</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Bumbu Masako</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>4</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+  <riwayat>
+    <id>14</id>
+    <waktu>07-07-2026 17:22:25</waktu>
+    <aktivitas>Hapus Barang</aktivitas>
+    <namaBarang>Bumbu Masako</namaBarang>
+    <stokLama>7</stokLama>
+    <stokBaru>0</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+  <riwayat>
+    <id>13</id>
+    <waktu>07-07-2026 17:21:18</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Sarimi Isi 2</namaBarang>
+    <stokLama>4</stokLama>
+    <stokBaru>2</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+  <riwayat>
+    <id>12</id>
+    <waktu>07-07-2026 17:20:56</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Indomie Kari</namaBarang>
+    <stokLama>4</stokLama>
+    <stokBaru>3</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+  <riwayat>
+    <id>11</id>
+    <waktu>07-07-2026 17:18:57</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Taro</namaBarang>
+    <stokLama>6</stokLama>
+    <stokBaru>7</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+  <riwayat>
+    <id>10</id>
+    <waktu>07-07-2026 17:15:32</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Energen Coklat</namaBarang>
+    <stokLama>6</stokLama>
+    <stokBaru>5</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+  <riwayat>
+    <id>9</id>
+    <waktu>07-07-2026 17:12:37</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Ayam Suwir</namaBarang>
+    <stokLama>5</stokLama>
+    <stokBaru>6</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+  <riwayat>
+    <id>8</id>
+    <waktu>07-07-2026 17:04:10</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Aqua</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>5</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+  <riwayat>
+    <id>7</id>
+    <waktu>07-07-2026 17:03:42</waktu>
+    <aktivitas>Hapus Barang</aktivitas>
+    <namaBarang>Aqua</namaBarang>
+    <stokLama>6</stokLama>
+    <stokBaru>0</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+  <riwayat>
+    <id>6</id>
+    <waktu>07-07-2026 16:57:21</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Tango</namaBarang>
+    <stokLama>4</stokLama>
+    <stokBaru>6</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+  <riwayat>
+    <id>5</id>
+    <waktu>07-07-2026 16:49:49</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Bakso</namaBarang>
+    <stokLama>8</stokLama>
+    <stokBaru>7</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+  <riwayat>
+    <id>4</id>
+    <waktu>07-07-2026 16:45:16</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Susu Putih FF Sachet</namaBarang>
+    <stokLama>4</stokLama>
+    <stokBaru>5</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+  <riwayat>
+    <id>3</id>
+    <waktu>07-07-2026 16:23:20</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Kopi Kapal Api</namaBarang>
+    <stokLama>8</stokLama>
+    <stokBaru>5</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+  <riwayat>
+    <id>2</id>
+    <waktu>07-07-2026 16:23:07</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Oreo</namaBarang>
+    <stokLama>12</stokLama>
+    <stokBaru>11</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+  <riwayat>
+    <id>1</id>
+    <waktu>07-07-2026 16:17:02</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Taro</namaBarang>
+    <stokLama>7</stokLama>
+    <stokBaru>6</stokBaru>
+    <user>Admin</user>
+  </riwayat>
+</riwayatList>

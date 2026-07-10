@@ -1,0 +1,11 @@
+<menuList>
+
+    <menu>
+        <id>1</id>
+        <namaMenu>Indomie Goreng</namaMenu>
+        <kategori>Makanan</kategori>
+        <harga>12000</harga>
+        <status>Aktif</status>
+    </menu>
+
+</menuList>

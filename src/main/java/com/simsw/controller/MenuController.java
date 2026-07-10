@@ -54,6 +54,9 @@ public class MenuController {
     private Button btnTambah;
 
     @FXML
+    private Button btnKelolaResep;
+
+    @FXML
     private Button btnDelete;
 
     @FXML
@@ -253,6 +256,13 @@ public class MenuController {
             alert.showAndWait();
         }
     }
+
+    @FXML
+    private void openKelolaResep(ActionEvent event) {
+        // Tulis logika untuk membuka menu resep di sini
+        System.out.println("Tombol kelola resep diklik!");
+    }
+
     // DELETE MENU
     @FXML
     private void deleteMenu(ActionEvent event) {

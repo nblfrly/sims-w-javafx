@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.simsw.dao.xstream.PegawaiXStreamDAO;
 import com.simsw.model.Pegawai;
+import com.simsw.utill.Session;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,6 +31,7 @@ public class LoginController {
 
         PegawaiXStreamDAO dao = new PegawaiXStreamDAO();
         Pegawai pegawai = dao.login(username, password);
+        Session.setCurrentPegawai(pegawai);
         if (pegawai != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simsw/view/Dashboard.fxml"));
 

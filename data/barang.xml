@@ -307,4 +307,25 @@
     <stok>6</stok>
     <stokMinimum>4</stokMinimum>
   </barang>
+  <barang>
+    <id>54</id>
+    <namaBarang>testRiwayat</namaBarang>
+    <kategori>Minuman</kategori>
+    <stok>2</stok>
+    <stokMinimum>4</stokMinimum>
+  </barang>
+  <barang>
+    <id>55</id>
+    <namaBarang>tes Riwayat 2</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>5</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>56</id>
+    <namaBarang>tes riwayat 3</namaBarang>
+    <kategori>Snack</kategori>
+    <stok>1</stok>
+    <stokMinimum>1</stokMinimum>
+  </barang>
 </barangList>

@@ -1,6 +1,7 @@
 package com.simsw.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,9 +25,12 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 
 import com.simsw.dao.xstream.BarangXStreamDAO;
+import com.simsw.dao.xstream.RiwayatXStreamDAO;
 import com.simsw.dao.dom.BarangXMLDAO;
 import com.simsw.dao.mysql.BarangDAO;
 import com.simsw.model.Barang;
+import com.simsw.model.Riwayat;
+import com.simsw.utill.Session;
 
 public class InventarisController {
 
@@ -71,6 +75,7 @@ public class InventarisController {
 
     private Barang selectedBarang = null;
     private ObservableList<Barang> masterData = FXCollections.observableArrayList();
+    
 
     @FXML
     public void initialize() {
@@ -129,7 +134,7 @@ public class InventarisController {
         //     System.out.println(b.getId() + " | " + b.getNamaBarang() + " | " + b.getKategori() + " | " + b.getStok());
         // }
 
-        inventoryTable.setItems(masterData);
+        // inventoryTable.setItems(masterData);
     }
 
     private void setupSearch() {
@@ -199,16 +204,47 @@ public class InventarisController {
                 );
 
                 sukses = dao.insertBarang(barang);
+
+                if (sukses) {
+                    String namaPegawai = Session.getCurrentPegawai().getNama();
+                    Riwayat riwayat = new Riwayat(
+                        LocalDateTime.now(),
+                        0,
+                        stok,
+                        nama,
+                        namaPegawai,
+                        "Tambah Barang"
+                    );
+
+                    riwayatDAO.tambahRiwayat(riwayat);
+                }
                 
             } else {
+                int stokLama = selectedBarang.getStok();
                 selectedBarang.setNamaBarang(nama);
                 selectedBarang.setKategori(kategori);
                 selectedBarang.setStok(stok);
                 selectedBarang.setStokMinimum(stokMinimum);
 
                 sukses = dao.updateBarang(selectedBarang);
-            }
+            
+    
 
+                if (sukses) {
+                    String namaPegawai = Session.getCurrentPegawai().getNama();
+                    Riwayat riwayat = new Riwayat(
+                        LocalDateTime.now(),
+                        stokLama,
+                        stok,
+                        nama,
+                        namaPegawai,
+                        "Update Barang"
+                    );
+
+                    riwayatDAO.tambahRiwayat(riwayat);
+                }
+            }
+            
             if (sukses) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
@@ -228,6 +264,7 @@ public class InventarisController {
                 alert.setContentText("Proses gagal.");
                 alert.showAndWait();
             }
+        
 
         } catch (NumberFormatException e) {
 
@@ -262,6 +299,7 @@ public class InventarisController {
             boolean sukses = dao.deleteBarang(selectedBarang.getId());
 
             if (sukses) {
+                
                 Alert info = new Alert(Alert.AlertType.INFORMATION);
                 info.setHeaderText(null);
                 info.setContentText("Barang berhasil dihapus.");
@@ -294,4 +332,6 @@ public class InventarisController {
         stage.setTitle("Dashboard");
         stage.show();
     }
+
+    private final RiwayatXStreamDAO riwayatDAO = new RiwayatXStreamDAO();
 }

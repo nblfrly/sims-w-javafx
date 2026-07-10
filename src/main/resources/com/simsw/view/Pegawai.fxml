@@ -19,11 +19,11 @@
 <BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simsw.controller.PegawaiController">
 
     <top>
-        <HBox alignment="CENTER_LEFT" prefHeight="70" spacing="15" style="-fx-background-color:#D32F2F;">
+        <HBox alignment="CENTER_LEFT" prefHeight="70" spacing="15" style="-fx-background-color:#C62828;">
             <padding><Insets left="20" right="20" /></padding>
             <children>
                 <Button fx:id="btnDashboard" onAction="#backDashboard" style="-fx-background-color:white;-fx-text-fill:#D32F2F;-fx-font-weight:bold;" text="🏠 Dashboard" />
-                <Label text="SIMS-W : EMPLOYEE MANAGER" textFill="WHITE">
+                <Label text="SIMS-W | Employee Manager" textFill="WHITE">
                     <font><Font size="24" /></font>
                 </Label>
             </children>

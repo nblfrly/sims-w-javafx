@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -27,7 +26,7 @@
 
             <children>
 
-                <Label text="SIMS-W : WARMINDO STOCK MANAGER" textFill="WHITE">
+                <Label text="SIMS-W | Warmindo Stock Manager" textFill="WHITE">
 
                     <font>
                         <Font size="24" />
@@ -60,7 +59,7 @@
                     <children>
 
                         <!-- Ganti logo.png dengan logo milik kalian -->
-                        <ImageView fitHeight="220" fitWidth="220" preserveRatio="true" smooth="true" cache="true">
+                        <ImageView cache="true" fitHeight="220" fitWidth="220" preserveRatio="true" smooth="true">
 
                             <image>
                                 <!-- <Image url="@../image/logo1.png" /> -->

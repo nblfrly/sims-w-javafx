@@ -1,14 +1,9 @@
 package com.simsw.controller;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-
-import com.simsw.dao.xstream.PegawaiXStreamDAO;
 import com.simsw.dao.xstream.RiwayatXStreamDAO;
-import com.simsw.model.Pegawai;
 import com.simsw.model.Riwayat;
-
-import javafx.beans.property.SimpleStringProperty;
+import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -16,119 +11,198 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class RiwayatController {
+public class RiwayatController implements Initializable {
 
+    @FXML
+    private TextField txtCari;
+
+    @FXML
+    private DatePicker tanggalFilter;
+
+    @FXML
+    private Button btnReset;
+    
     @FXML
     private Button btnDashboard;
 
     @FXML
-    private TableColumn<Riwayat, String> colNama;
+    private Label lblTotalLog;
 
     @FXML
-    private TableColumn<Riwayat, String> colItem;
+    private Label lblTambah;
 
     @FXML
-    private TableColumn<Riwayat, Integer> colNewValue;
+    private Label lblUpdate;
 
+    @FXML
+    private Label lblHapus;
+
+    @FXML
+    private ComboBox<String> aktivitasFilter;
+
+    @FXML
+    private TableView<Riwayat> tableRiwayat;
+
+    @FXML
+    private TableColumn<Riwayat, String> colWaktu;
+
+    @FXML
+    private TableColumn<Riwayat, String> colAktivitas;
+
+    @FXML
+    private TableColumn<Riwayat, String> colBarang;
+
+    @FXML
+    private TableColumn<Riwayat, Integer> colStokLama;
+
+    @FXML
+    private TableColumn<Riwayat, Integer> colStokBaru;
+
+    @FXML
+    private TableColumn<Riwayat, String> colUser;
+
+    // removed unused 'data' field
     private ObservableList<Riwayat> masterData = FXCollections.observableArrayList();
 
-    @FXML
-    private TableColumn<Riwayat, String> colKeterangan;
+    private FilteredList<Riwayat> filteredData;
 
-    @FXML
-    private TableColumn<Riwayat, Integer> colOldValue;
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
 
-    @FXML
-    private TableColumn<Riwayat, LocalDateTime> colTimestamp;
+        colWaktu.setCellValueFactory(new PropertyValueFactory<>("waktu"));
+        colAktivitas.setCellValueFactory(new PropertyValueFactory<>("aktivitas"));
+        colBarang.setCellValueFactory(new PropertyValueFactory<>("namaBarang"));
+        colStokLama.setCellValueFactory(new PropertyValueFactory<>("stokLama"));
+        colStokBaru.setCellValueFactory(new PropertyValueFactory<>("stokBaru"));
+        colUser.setCellValueFactory(new PropertyValueFactory<>("user"));
 
-    @FXML
-    private Button exportRiwayat;
+        aktivitasFilter.getItems().addAll(
+                "Semua",
+                "Tambah Barang",
+                "Update Barang",
+                "Hapus Barang"
+        );
 
-    @FXML
-    private TextField filterRiwayatTxt;
+        aktivitasFilter.setValue("Semua");
 
-    @FXML
-    private TableView<Riwayat> riwayatTabel;
+        loadTable();
+        setupFilter();
+    }
 
-    @FXML
-    private DatePicker pilihanTanggal;
+    private void loadTable() {
+        RiwayatXStreamDAO dao = new RiwayatXStreamDAO();
+        masterData.clear();
+        masterData.addAll(dao.getAllRiwayat());
 
-    @FXML
-    private Button resetFilterRiwayat;
+        filteredData = new FilteredList<>(masterData, p -> true);
 
+        SortedList<Riwayat> sorted = new SortedList<>(filteredData);
+        sorted.comparatorProperty().bind(tableRiwayat.comparatorProperty());
+        tableRiwayat.setItems(sorted);
+        
+        updateStatistik();
+    }
+
+    private void updateStatistik() {
+        lblTotalLog.setText(String.valueOf(masterData.size()));
+
+        long tambah = masterData.stream()
+                .filter(r -> r.getAktivitas().equals("Tambah Barang"))
+                .count();
+
+        long update = masterData.stream()
+                .filter(r -> r.getAktivitas().equals("Update Barang"))
+                .count();
+
+        long hapus = masterData.stream()
+                .filter(r -> r.getAktivitas().equals("Hapus Barang"))
+                .count();
+
+        lblTambah.setText(String.valueOf(tambah));
+        lblUpdate.setText(String.valueOf(update));
+        lblHapus.setText(String.valueOf(hapus));
+    }
+    
     @FXML
-    private ComboBox<?> kategoriFilter;
+    private void resetFilter(ActionEvent event){
+        txtCari.clear();
+        aktivitasFilter.setValue("Semua");
+        tanggalFilter.setValue(null);
+        tableRiwayat.setItems(masterData);
+
+    }
+
+    private void setupFilter() {
+        txtCari.textProperty().addListener((obs, oldVal, newVal) -> applyFilter());
+        aktivitasFilter.valueProperty().addListener((obs, oldVal, newVal) -> applyFilter());
+        tanggalFilter.valueProperty().addListener((obs, oldVal, newVal) -> applyFilter());
+    }
+
+    private void applyFilter() {
+        filteredData.setPredicate(riwayat -> {
+            // search
+            String keyword = txtCari.getText();
+
+            if (keyword != null && !keyword.isBlank()) {
+                keyword = keyword.toLowerCase();
+                boolean cocokSearch =
+                        riwayat.getNamaBarang().toLowerCase().contains(keyword)
+                        || riwayat.getUser().toLowerCase().contains(keyword)
+                        || riwayat.getAktivitas().toLowerCase().contains(keyword);
+
+                if (!cocokSearch)
+                    return false;
+            }
+
+            // filter aktivitas
+            String aktivitas = aktivitasFilter.getValue();
+
+            if (aktivitas != null && !aktivitas.equals("Semua")
+                    && !riwayat.getAktivitas().equals(aktivitas)) {
+                return false;
+            }
+
+            // filter tanggal
+            LocalDate tanggalDipilih = tanggalFilter.getValue();
+
+            if (tanggalDipilih != null) {
+                String tanggalXML = riwayat.getWaktu().substring(0, 10);
+                String tanggalPicker =
+                        String.format("%02d-%02d-%04d",
+                                tanggalDipilih.getDayOfMonth(),
+                                tanggalDipilih.getMonthValue(),
+                                tanggalDipilih.getYear());
+
+                if (!tanggalXML.equals(tanggalPicker))
+                    return false;
+            }
+            return true;
+        });
+    }
 
     @FXML
     private void backDashboard(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simsw/view/Dashboard.fxml"));
-
         Parent root = loader.load();
-        Stage stage = (Stage) btnDashboard.getScene().getWindow();
 
+        Stage stage = (Stage) btnDashboard.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.setTitle("Dashboard");
         stage.show();
     }
-
-    @FXML
-    public void initialize() {
-        // long start = System.currentTimeMillis();
-        // kategoriFilter.getItems().addAll(
-        //         "Admin",
-        //         "Pegawai"
-        // );
-
-        loadTable();
-        setupSearch();
-
-    }
-
-    private void loadTable() {
-        colNama.setCellValueFactory(new PropertyValueFactory<>("namaPegawai"));
-        colItem.setCellValueFactory(new PropertyValueFactory<>("namaBarang"));
-        colKeterangan.setCellValueFactory(new PropertyValueFactory<>("keterangan"));
-        colOldValue.setCellValueFactory(new PropertyValueFactory<>("jumlahLama"));
-        colNewValue.setCellValueFactory(new PropertyValueFactory<>("jumlahBaru"));
-        colTimestamp.setCellValueFactory(new PropertyValueFactory<>("tanggal"));
-
-        RiwayatXStreamDAO dao = new RiwayatXStreamDAO();
-        masterData.setAll(dao.getAllRiwayat());
-
-        riwayatTabel.setItems(masterData);
-    }
-
-    private void setupSearch() {
-        FilteredList<Riwayat> filteredData = new FilteredList<>(masterData, r -> true);
-
-        filterRiwayatTxt.textProperty().addListener((obs, oldValue, newValue) -> {
-            filteredData.setPredicate(riwayat -> {
-                if (newValue == null || newValue.isBlank()) {
-                    return true;
-                }
-
-                String keyword = newValue.toLowerCase();
-
-                return riwayat.getNamaPegawai().toLowerCase().contains(keyword)
-                        || riwayat.getNamaBarang().toLowerCase().contains(keyword);
-            });
-        });
-
-        SortedList<Riwayat> sortedData = new SortedList<>(filteredData);
-        sortedData.comparatorProperty().bind(riwayatTabel.comparatorProperty());
-
-        riwayatTabel.setItems(sortedData);
-    }
 }
-

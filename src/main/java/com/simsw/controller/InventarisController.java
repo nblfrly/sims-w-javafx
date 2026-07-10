@@ -2,6 +2,7 @@ package com.simsw.controller;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,9 +29,9 @@ import com.simsw.dao.xstream.BarangXStreamDAO;
 import com.simsw.dao.xstream.RiwayatXStreamDAO;
 import com.simsw.dao.dom.BarangXMLDAO;
 import com.simsw.dao.mysql.BarangDAO;
+import com.simsw.session.Session;
 import com.simsw.model.Barang;
 import com.simsw.model.Riwayat;
-import com.simsw.utill.Session;
 
 public class InventarisController {
 
@@ -75,7 +76,6 @@ public class InventarisController {
 
     private Barang selectedBarang = null;
     private ObservableList<Barang> masterData = FXCollections.observableArrayList();
-    
 
     @FXML
     public void initialize() {
@@ -134,7 +134,7 @@ public class InventarisController {
         //     System.out.println(b.getId() + " | " + b.getNamaBarang() + " | " + b.getKategori() + " | " + b.getStok());
         // }
 
-        // inventoryTable.setItems(masterData);
+        inventoryTable.setItems(masterData);
     }
 
     private void setupSearch() {
@@ -175,9 +175,17 @@ public class InventarisController {
         addButton.setText("Add Item");
     }
 
+    private String getUserLog() {
+        return com.simsw.session.Session.getCurrentUser().getNama()
+                + " ("
+                + com.simsw.session.Session.getCurrentUser().getRole()
+                + ")";
+    }
+
     @FXML
     private void saveItem(ActionEvent event) {
         try {
+            System.out.println("SAVE ITEM DIPANGGIL");
             String nama = nameField.getText().trim();
             String kategori = categoryCombo.getEditor().getText().trim();
 
@@ -186,15 +194,26 @@ public class InventarisController {
 
             if (nama.isEmpty() || kategori.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setHeaderText(null);
                 alert.setContentText("Nama dan kategori wajib diisi.");
                 alert.showAndWait();
                 return;
             }
-
+            
+         
             BarangXStreamDAO dao = new BarangXStreamDAO();
+            RiwayatXStreamDAO riwayatDAO = new RiwayatXStreamDAO();
+
             boolean sukses;
+            String aktivitas = "";
+            int stokLama = 0;
+            int stokBaru = stok;
+
+            String waktuSekarang = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
 
             if (selectedBarang == null) {
+                // logika 1: tambah barang
+                System.out.println("1");
                 Barang barang = new Barang(
                     0,
                     nama,
@@ -202,51 +221,57 @@ public class InventarisController {
                     stok,
                     stokMinimum
                 );
-
+                
                 sukses = dao.insertBarang(barang);
 
                 if (sukses) {
-                    String namaPegawai = Session.getCurrentPegawai().getNama();
-                    Riwayat riwayat = new Riwayat(
-                        LocalDateTime.now(),
-                        0,
-                        stok,
-                        nama,
-                        namaPegawai,
-                        "Tambah Barang"
-                    );
+                    aktivitas = "Tambah Barang";
+                    stokLama = 0;
 
-                    riwayatDAO.tambahRiwayat(riwayat);
+                    Riwayat riwayat = new Riwayat(
+                            0,
+                            waktuSekarang,
+                            aktivitas,
+                            nama,
+                            stokLama,
+                            stokBaru,
+                            getUserLog()
+                    );
+                    riwayatDAO.insertRiwayat(riwayat);
                 }
-                
+
             } else {
-                int stokLama = selectedBarang.getStok();
+                // logika 2: update barang lama
+                System.out.println("Proses Update Barang");
+                stokLama = selectedBarang.getStok(); // catat stok lama sebelum ditimpa
+
                 selectedBarang.setNamaBarang(nama);
                 selectedBarang.setKategori(kategori);
                 selectedBarang.setStok(stok);
                 selectedBarang.setStokMinimum(stokMinimum);
 
                 sukses = dao.updateBarang(selectedBarang);
-            
-    
 
                 if (sukses) {
-                    String namaPegawai = Session.getCurrentPegawai().getNama();
-                    Riwayat riwayat = new Riwayat(
-                        LocalDateTime.now(),
-                        stokLama,
-                        stok,
-                        nama,
-                        namaPegawai,
-                        "Update Barang"
-                    );
+                    aktivitas = "Update Barang";
 
-                    riwayatDAO.tambahRiwayat(riwayat);
+                    Riwayat riwayat = new Riwayat(
+                            0,
+                            waktuSekarang,
+                            aktivitas,
+                            nama,
+                            stokLama,
+                            stokBaru,
+                            getUserLog()
+                    );
+                    riwayatDAO.insertRiwayat(riwayat);
                 }
             }
-            
+
+            // logika 3: alert hasil
             if (sukses) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
 
                 if (selectedBarang == null) {
                     alert.setContentText("Data berhasil ditambahkan.");
@@ -255,25 +280,32 @@ public class InventarisController {
                 }
 
                 alert.showAndWait();
+
                 loadTable();
                 clearForm();
 
             } else {
-
                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
                 alert.setContentText("Proses gagal.");
                 alert.showAndWait();
             }
-        
 
         } catch (NumberFormatException e) {
-
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Stok harus berupa angka.");
+            alert.setHeaderText(null);
+            alert.setContentText("Stok dan stok minimum harus berupa angka.");
+            alert.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Terjadi Kesalahan");
+            alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
     }
-
+ 
     @FXML
     private void deleteItem(ActionEvent event) {
         if (selectedBarang == null) {
@@ -296,10 +328,24 @@ public class InventarisController {
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
             BarangXStreamDAO dao = new BarangXStreamDAO();
+            String namaBarang = selectedBarang.getNamaBarang();
+            int stokLama = selectedBarang.getStok();
             boolean sukses = dao.deleteBarang(selectedBarang.getId());
+            if (sukses) {
+                RiwayatXStreamDAO riwayatDAO = new RiwayatXStreamDAO();
+                Riwayat riwayat = new Riwayat(
+                        0,
+                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")),
+                        "Hapus Barang",
+                        namaBarang,
+                        stokLama,
+                        0,
+                        getUserLog()
+                );
+                riwayatDAO.insertRiwayat(riwayat);
+            }
 
             if (sukses) {
-                
                 Alert info = new Alert(Alert.AlertType.INFORMATION);
                 info.setHeaderText(null);
                 info.setContentText("Barang berhasil dihapus.");
@@ -332,6 +378,4 @@ public class InventarisController {
         stage.setTitle("Dashboard");
         stage.show();
     }
-
-    private final RiwayatXStreamDAO riwayatDAO = new RiwayatXStreamDAO();
 }

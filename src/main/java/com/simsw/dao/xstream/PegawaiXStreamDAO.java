@@ -42,7 +42,7 @@ public class PegawaiXStreamDAO {
     private List<Pegawai> loadPegawai() {
         try {
             File file = new File(XML_PATH);
-            if (!file.exists() || file.length() == 0) {
+            if (!file.exists()) {
                 return new ArrayList<>();
             }
 
@@ -104,7 +104,7 @@ public class PegawaiXStreamDAO {
         }
     }
 
-    // DELETE coba sssslagi ya
+    // DELETE coba
     public boolean deletePegawai(int id) {
         try {
             List<Pegawai> list = loadPegawai();

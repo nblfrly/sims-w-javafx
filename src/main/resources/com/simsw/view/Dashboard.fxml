@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="650" prefWidth="1000" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simsw.controller.DashboardController">
+<BorderPane prefHeight="700" prefWidth="1000" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simsw.controller.DashboardController">
 
     <!-- ================= HEADER ================= -->
 
@@ -27,7 +27,7 @@
 
             <children>
 
-                <Label text="SIMS-W : WARMINDO STOCK MANAGER" textFill="WHITE">
+                <Label text="SIMS-W | Warmindo Stock Manager" textFill="WHITE">
 
                     <font>
                         <Font size="24" />
@@ -35,17 +35,28 @@
 
                 </Label>
 
-                <Region HBox.hgrow="ALWAYS" />
+                <!-- Spacer -->
+                <Region HBox.hgrow="ALWAYS"/>
+                <!-- Informasi User -->
+                <HBox
+                    alignment="CENTER_LEFT"
+                    spacing="5">
 
-                <Label text="👤 Owner" textFill="WHITE">
+                  <Label
+                    fx:id="lblUserInfo"
+                    text="👤 Nabil | Admin"
+                    textFill="WHITE">
 
                     <font>
-                        <Font size="15" />
+                        <Font size="15"/>
                     </font>
 
                 </Label>
-                
-                <Region prefWidth="20" />
+
+                </HBox>
+
+                <!-- Jarak -->
+                <Region prefWidth="20"/>
 
                 <Button fx:id="btnLogout" onAction="#logout" style="-fx-background-color:white;                                -fx-text-fill:#C62828;                                -fx-font-weight:bold;" text="Logout" />
 
@@ -67,7 +78,7 @@
 
             <children>
 
-                <Label text="Selamat Datang, Owner!">
+                <Label fx:id="lblWelcome" text="Selamat Datang">
 
                     <font>
                         <Font size="28" />

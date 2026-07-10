@@ -14,7 +14,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simsw.controller.InventarisController">
 <top>
-    <HBox alignment="CENTER_LEFT" prefHeight="70.0" spacing="15" style="-fx-background-color: #D32F2F;" BorderPane.alignment="CENTER">
+    <HBox alignment="CENTER_LEFT" prefHeight="70.0" spacing="15" style="-fx-background-color: #C62828;" BorderPane.alignment="CENTER">
 
         <padding>
             <Insets left="20.0" right="20.0" />

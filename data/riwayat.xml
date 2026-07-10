@@ -1,12 +1,30 @@
 <riwayatList>
   <riwayat>
+    <id>23</id>
+    <waktu>10-07-2026 15:02:58</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Indomie Kari</namaBarang>
+    <stokLama>4</stokLama>
+    <stokBaru>5</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>22</id>
+    <waktu>10-07-2026 14:07:08</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Otak-Otak</namaBarang>
+    <stokLama>5</stokLama>
+    <stokBaru>4</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
     <id>21</id>
     <waktu>08-07-2026 22:14:41</waktu>
     <aktivitas>Update Barang</aktivitas>
     <namaBarang>Kornet Sapi</namaBarang>
     <stokLama>4</stokLama>
     <stokBaru>3</stokBaru>
-    <user>Admin</user>
+    <user>Adnan (Admin)</user>
   </riwayat>
   <riwayat>
     <id>20</id>
@@ -15,7 +33,7 @@
     <namaBarang>Cukai</namaBarang>
     <stokLama>0</stokLama>
     <stokBaru>5</stokBaru>
-    <user>Admin</user>
+    <user>Nabil (Admin)</user>
   </riwayat>
   <riwayat>
     <id>19</id>
@@ -24,7 +42,7 @@
     <namaBarang>Mentega</namaBarang>
     <stokLama>0</stokLama>
     <stokBaru>5</stokBaru>
-    <user>Admin</user>
+    <user>Nabil (Admin)</user>
   </riwayat>
   <riwayat>
     <id>18</id>
@@ -33,7 +51,7 @@
     <namaBarang>Aqua</namaBarang>
     <stokLama>0</stokLama>
     <stokBaru>5</stokBaru>
-    <user>Admin</user>
+    <user>Nabil (Admin)</user>
   </riwayat>
   <riwayat>
     <id>17</id>
@@ -42,7 +60,7 @@
     <namaBarang>Indomie Cabe Ijo</namaBarang>
     <stokLama>5</stokLama>
     <stokBaru>3</stokBaru>
-    <user>Admin</user>
+    <user>Adnan (Admin)</user>
   </riwayat>
   <riwayat>
     <id>16</id>
@@ -51,7 +69,7 @@
     <namaBarang>Bumbu Masako</namaBarang>
     <stokLama>7</stokLama>
     <stokBaru>4</stokBaru>
-    <user>Admin</user>
+    <user>Adnan (Admin)</user>
   </riwayat>
   <riwayat>
     <id>15</id>

@@ -17,7 +17,7 @@
         <HBox spacing="15"
               alignment="CENTER_LEFT"
               prefHeight="70"
-              style="-fx-background-color:#D32F2F;">
+              style="-fx-background-color:#C62828;">
 
             <padding>
                 <Insets left="20" right="20"/>

@@ -108,7 +108,7 @@
     <id>23</id>
     <namaBarang>Indomie Kari</namaBarang>
     <kategori>Mie</kategori>
-    <stok>4</stok>
+    <stok>5</stok>
     <stokMinimum>4</stokMinimum>
   </barang>
   <barang>
@@ -262,7 +262,7 @@
     <id>45</id>
     <namaBarang>Otak-Otak</namaBarang>
     <kategori>Topping</kategori>
-    <stok>5</stok>
+    <stok>4</stok>
     <stokMinimum>3</stokMinimum>
   </barang>
   <barang>

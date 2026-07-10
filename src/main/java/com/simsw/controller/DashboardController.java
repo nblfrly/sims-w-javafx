@@ -5,23 +5,26 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.ResourceBundle;
+import java.net.URL;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import com.simsw.session.Session;
 import com.simsw.dao.xstream.BarangXStreamDAO;
 import com.simsw.dao.xstream.RiwayatXStreamDAO;
 import com.simsw.model.Barang;
 import com.simsw.model.Riwayat;
 
-public class DashboardController {
-
+public class DashboardController implements Initializable {
     @FXML
     private Button btnInventaris;
 
@@ -34,7 +37,13 @@ public class DashboardController {
     @FXML
     private Button btnPegawai;
 
-     @FXML
+    @FXML
+    private Label lblWelcome;
+
+    @FXML
+    private Label lblUserInfo;
+
+    @FXML
     private Label lblAktivitas;
 
     @FXML
@@ -46,10 +55,38 @@ public class DashboardController {
     @FXML
     private Label lblStok;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // load statistik dashboard
+        updateDashboard();
+        // tampilkan user login
+        if (Session.isLogin()) {
+            // Session provides getCurrentUser() 
+            String nama = Session.getCurrentUser().getNama();
+            String role = Session.getCurrentUser().getRole();
+            // sapaan
+            lblWelcome.setText("Selamat Datang, " + nama + "!");
+            // info user (1 label)
+            lblUserInfo.setText("👤 " + nama + " | " + role);
+
+            // hak akses
+            if (role.equalsIgnoreCase("Pegawai")) {
+                btnPegawai.setDisable(true);
+                // atau btnPegawai.setVisible(false);
+            }
+
+        } else {
+            lblWelcome.setText("Selamat Datang!");
+            lblUserInfo.setText("👤 Guest");
+
+            // jika belum login, sembunyikan/nonaktifkan menu tertentu
+            btnPegawai.setDisable(true);
+        }
+    }
+
     @FXML
     private void openInventaris(ActionEvent event) throws IOException {
         long start = System.currentTimeMillis();
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simsw/view/Inventaris.fxml"));
 
         Parent root = loader.load();
@@ -57,17 +94,6 @@ public class DashboardController {
         Stage stage = (Stage) btnInventaris.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.setTitle("Inventaris");
-        stage.show();
-    }
-
-    @FXML
-    private void logout(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simsw/view/Login.fxml"));
-
-        Parent root = loader.load();
-        Stage stage = (Stage) btnLogout.getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Login");
         stage.show();
     }
 
@@ -145,10 +171,19 @@ public class DashboardController {
         lblAktivitas.setText(String.valueOf(aktivitasHariIni));
     }
 
+
     @FXML
-    public void initialize() {
-        updateDashboard();
+    private void logout(ActionEvent e) throws IOException{
+        Session.logout();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/com/simsw/view/Login.fxml"));
+
+        Stage stage = (Stage) btnLogout.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Login");
+        stage.show();
     }
+
 }
 
 

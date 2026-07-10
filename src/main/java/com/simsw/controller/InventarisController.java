@@ -29,6 +29,7 @@ import com.simsw.dao.xstream.BarangXStreamDAO;
 import com.simsw.dao.xstream.RiwayatXStreamDAO;
 import com.simsw.dao.dom.BarangXMLDAO;
 import com.simsw.dao.mysql.BarangDAO;
+import com.simsw.session.Session;
 import com.simsw.model.Barang;
 import com.simsw.model.Riwayat;
 
@@ -174,6 +175,13 @@ public class InventarisController {
         addButton.setText("Add Item");
     }
 
+    private String getUserLog() {
+        return com.simsw.session.Session.getCurrentUser().getNama()
+                + " ("
+                + com.simsw.session.Session.getCurrentUser().getRole()
+                + ")";
+    }
+
     @FXML
     private void saveItem(ActionEvent event) {
         try {
@@ -227,7 +235,7 @@ public class InventarisController {
                             nama,
                             stokLama,
                             stokBaru,
-                            "Admin"
+                            getUserLog()
                     );
                     riwayatDAO.insertRiwayat(riwayat);
                 }
@@ -254,7 +262,7 @@ public class InventarisController {
                             nama,
                             stokLama,
                             stokBaru,
-                            "Admin"
+                            getUserLog()
                     );
                     riwayatDAO.insertRiwayat(riwayat);
                 }
@@ -298,8 +306,6 @@ public class InventarisController {
         }
     }
  
-
-
     @FXML
     private void deleteItem(ActionEvent event) {
         if (selectedBarang == null) {
@@ -334,7 +340,7 @@ public class InventarisController {
                         namaBarang,
                         stokLama,
                         0,
-                        "Admin"
+                        getUserLog()
                 );
                 riwayatDAO.insertRiwayat(riwayat);
             }

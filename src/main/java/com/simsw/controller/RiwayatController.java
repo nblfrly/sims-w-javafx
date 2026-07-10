@@ -59,13 +59,16 @@ public class RiwayatController {
     private TextField filterRiwayatTxt;
 
     @FXML
-    private TableView<Riwayat> riwayatTable;
+    private TableView<Riwayat> riwayatTabel;
 
     @FXML
     private DatePicker pilihanTanggal;
 
     @FXML
     private Button resetFilterRiwayat;
+
+    @FXML
+    private ComboBox<?> kategoriFilter;
 
     @FXML
     private void backDashboard(ActionEvent event) throws IOException {
@@ -103,7 +106,7 @@ public class RiwayatController {
         RiwayatXStreamDAO dao = new RiwayatXStreamDAO();
         masterData.setAll(dao.getAllRiwayat());
 
-        riwayatTable.setItems(masterData);
+        riwayatTabel.setItems(masterData);
     }
 
     private void setupSearch() {
@@ -123,9 +126,9 @@ public class RiwayatController {
         });
 
         SortedList<Riwayat> sortedData = new SortedList<>(filteredData);
-        sortedData.comparatorProperty().bind(riwayatTable.comparatorProperty());
+        sortedData.comparatorProperty().bind(riwayatTabel.comparatorProperty());
 
-        riwayatTable.setItems(sortedData);
+        riwayatTabel.setItems(sortedData);
     }
 }
 

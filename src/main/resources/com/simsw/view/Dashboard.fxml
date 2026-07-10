@@ -36,19 +36,14 @@
                 </Label>
 
                 <!-- Spacer -->
-                <Region HBox.hgrow="ALWAYS"/>
+                <Region HBox.hgrow="ALWAYS" />
                 <!-- Informasi User -->
-                <HBox
-                    alignment="CENTER_LEFT"
-                    spacing="5">
+                <HBox alignment="CENTER_LEFT" spacing="5">
 
-                  <Label
-                    fx:id="lblUserInfo"
-                    text="👤 Nabil | Admin"
-                    textFill="WHITE">
+                  <Label fx:id="lblUserInfo" text="👤 Nabil | Admin" textFill="WHITE">
 
                     <font>
-                        <Font size="15"/>
+                        <Font size="15" />
                     </font>
 
                 </Label>
@@ -56,7 +51,7 @@
                 </HBox>
 
                 <!-- Jarak -->
-                <Region prefWidth="20"/>
+                <Region prefWidth="20" />
 
                 <Button fx:id="btnLogout" onAction="#logout" style="-fx-background-color:white;                                -fx-text-fill:#C62828;                                -fx-font-weight:bold;" text="Logout" />
 
@@ -110,7 +105,7 @@
 
                         </VBox>
 
-                        <VBox alignment="CENTER" prefHeight="120" prefWidth="220" spacing="10" style="-fx-background-color:white;                                      -fx-background-radius:12;                                      -fx-border-color:#DDDDDD;                                      -fx-border-radius:12;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <VBox alignment="CENTER" prefHeight="120" prefWidth="220" spacing="10" style="-fx-background-color: #ff6666; -fx-background-radius: 12; -fx-border-color: #DDDDDD; -fx-border-radius: 12;" GridPane.columnIndex="1" GridPane.rowIndex="0">
 
                             <children>
 

@@ -118,7 +118,9 @@ public class InventarisController {
 
         statusColumn.setCellValueFactory(cell -> {
             Barang barang = cell.getValue();
-            if (barang.getStok() <= barang.getStokMinimum()) {
+            if (barang.getStok() == 0) {
+                return new SimpleStringProperty("Habis");
+            } else if (barang.getStok() <= barang.getStokMinimum()){
                 return new SimpleStringProperty("Menipis");
             } else {
                 return new SimpleStringProperty("Aman");
@@ -134,8 +136,25 @@ public class InventarisController {
         // for (Barang b : list) {
         //     System.out.println(b.getId() + " | " + b.getNamaBarang() + " | " + b.getKategori() + " | " + b.getStok());
         // }
+        inventoryTable.setRowFactory(tv -> new javafx.scene.control.TableRow<Barang>() {
+            @Override
+            protected void updateItem(Barang barang, boolean empty) {
+                super.updateItem(barang, empty);
 
+                if (empty || barang == null) {
+                    setStyle("");
+                } else if (barang.getStok() == 0) {
+                    setStyle("-fx-background-color: #ff6666;");
+                } else if (barang.getStok() <= barang.getStokMinimum()) {
+                    setStyle("-fx-background-color: #fff59d;");
+                } 
+                else {
+                    setStyle("");
+                }
+            }
+        });
         inventoryTable.setItems(masterData);
+        
     }
 
     private void setupSearch() {

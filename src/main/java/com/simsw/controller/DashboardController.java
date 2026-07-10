@@ -38,10 +38,22 @@ public class DashboardController implements Initializable {
     private Button btnPegawai;
 
     @FXML
-    private Label lblWelcome;
+    private Button btnMenu;
+
+    @FXML
+    private Button btnPenggunaan;
+
+    @FXML
+    private Button btnLaporan;
 
     @FXML
     private Label lblUserInfo;
+
+    @FXML
+    private Label lblWelcome;
+
+    @FXML
+    private Label lblTanggal;
 
     @FXML
     private Label lblAktivitas;
@@ -54,6 +66,9 @@ public class DashboardController implements Initializable {
 
     @FXML
     private Label lblStok;
+
+    @FXML
+    private Label lblPegawai;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -88,8 +103,8 @@ public class DashboardController implements Initializable {
     private void openInventaris(ActionEvent event) throws IOException {
         long start = System.currentTimeMillis();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simsw/view/Inventaris.fxml"));
-
         Parent root = loader.load();
+        
         System.out.println("FXML Load = "+ (System.currentTimeMillis() - start) + " ms");
         Stage stage = (Stage) btnInventaris.getScene().getWindow();
         stage.setScene(new Scene(root));
@@ -101,10 +116,9 @@ public class DashboardController implements Initializable {
     private void openRiwayat(ActionEvent event) {
         try {
             long start = System.currentTimeMillis();
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simsw/view/Riwayat.fxml"));
-
             Parent root = loader.load();
+            
             System.out.println("FXML Load = " + (System.currentTimeMillis() - start) + " ms");
             Stage stage = (Stage) btnRiwayat.getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -132,10 +146,9 @@ public class DashboardController implements Initializable {
     @FXML
     private void openPegawai(ActionEvent event) throws IOException {
         long start = System.currentTimeMillis();
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simsw/view/Pegawai.fxml"));
-
         Parent root = loader.load();
+
         System.out.println("FXML Load = " + (System.currentTimeMillis() - start) + " ms");
         Stage stage = (Stage) btnInventaris.getScene().getWindow();
         stage.setScene(new Scene(root));
@@ -171,19 +184,27 @@ public class DashboardController implements Initializable {
         lblAktivitas.setText(String.valueOf(aktivitasHariIni));
     }
 
-
     @FXML
     private void logout(ActionEvent e) throws IOException{
         Session.logout();
-
         Parent root = FXMLLoader.load(getClass().getResource("/com/simsw/view/Login.fxml"));
-
+        
         Stage stage = (Stage) btnLogout.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.setTitle("Login");
         stage.show();
     }
 
+    @FXML
+    private void openMenu(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simsw/view/Menu.fxml"));
+        Parent root = loader.load();
+
+        Stage stage =(Stage) btnMenu.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Menu Warmindo");
+        stage.show();
+    }
 }
 
 

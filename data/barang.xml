@@ -94,7 +94,7 @@
     <id>21</id>
     <namaBarang>Keju</namaBarang>
     <kategori>Topping</kategori>
-    <stok>4</stok>
+    <stok>5</stok>
     <stokMinimum>4</stokMinimum>
   </barang>
   <barang>
@@ -185,7 +185,7 @@
     <id>34</id>
     <namaBarang>Indomie Goreng Aceh</namaBarang>
     <kategori>Mie</kategori>
-    <stok>4</stok>
+    <stok>5</stok>
     <stokMinimum>3</stokMinimum>
   </barang>
   <barang>

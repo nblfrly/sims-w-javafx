@@ -8,4 +8,76 @@
         <status>Aktif</status>
     </menu>
 
+    <menu>
+        <id>2</id>
+        <namaMenu>Indomie Kuah Ayam Bawang</namaMenu>
+        <kategori>Makanan</kategori>
+        <harga>12000</harga>
+        <status>Aktif</status>
+    </menu>
+
+    <menu>
+        <id>3</id>
+        <namaMenu>Indomie Nyemek</namaMenu>
+        <kategori>Makanan</kategori>
+        <harga>15000</harga>
+        <status>Aktif</status>
+    </menu>
+
+    <menu>
+        <id>4</id>
+        <namaMenu>Nasi Telur</namaMenu>
+        <kategori>Makanan</kategori>
+        <harga>14000</harga>
+        <status>Aktif</status>
+    </menu>
+
+    <menu>
+        <id>5</id>
+        <namaMenu>Nasi Sosis</namaMenu>
+        <kategori>Makanan</kategori>
+        <harga>16000</harga>
+        <status>Aktif</status>
+    </menu>
+
+    <menu>
+        <id>6</id>
+        <namaMenu>Nasi Nugget</namaMenu>
+        <kategori>Makanan</kategori>
+        <harga>17000</harga>
+        <status>Aktif</status>
+    </menu>
+
+    <menu>
+        <id>7</id>
+        <namaMenu>Es Teh Manis</namaMenu>
+        <kategori>Minuman</kategori>
+        <harga>5000</harga>
+        <status>Aktif</status>
+    </menu>
+
+    <menu>
+        <id>8</id>
+        <namaMenu>Es Jeruk</namaMenu>
+        <kategori>Minuman</kategori>
+        <harga>7000</harga>
+        <status>Aktif</status>
+    </menu>
+
+    <menu>
+        <id>9</id>
+        <namaMenu>Kopi Hitam</namaMenu>
+        <kategori>Minuman</kategori>
+        <harga>8000</harga>
+        <status>Aktif</status>
+    </menu>
+
+    <menu>
+        <id>10</id>
+        <namaMenu>Good Day Cappuccino</namaMenu>
+        <kategori>Minuman</kategori>
+        <harga>9000</harga>
+        <status>Aktif</status>
+    </menu>
+
 </menuList>

@@ -97,7 +97,7 @@
 
                                   <Separator />
 
-                                  <Button fx:id="btnTambah" prefHeight="38" prefWidth="265.0" style="-fx-background-color:#388E3C;                            -fx-text-fill:white;" text="Tambah / Update Menu" />
+                                  <Button fx:id="btnTambah" onAction="#saveMenu" prefHeight="38" prefWidth="265.0" style="-fx-background-color:#388E3C;                            -fx-text-fill:white;" text="Tambah / Update Menu" />
 
                                   <Button fx:id="btnDelete" prefHeight="38" prefWidth="265.0" style="-fx-background-color:#D32F2F;                            -fx-text-fill:white;" text="Hapus Menu" />
 

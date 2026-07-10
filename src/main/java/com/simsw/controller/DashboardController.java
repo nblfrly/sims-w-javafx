@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import com.simsw.session.Session;
+import com.simsw.utill.Session;
 import com.simsw.dao.xstream.BarangXStreamDAO;
 import com.simsw.dao.xstream.RiwayatXStreamDAO;
 import com.simsw.model.Barang;

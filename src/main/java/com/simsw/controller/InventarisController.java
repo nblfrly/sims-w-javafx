@@ -31,6 +31,7 @@ import com.simsw.dao.dom.BarangXMLDAO;
 import com.simsw.dao.mysql.BarangDAO;
 import com.simsw.utill.Session;
 import com.simsw.model.Barang;
+import com.simsw.model.Pegawai;
 import com.simsw.model.Riwayat;
 
 public class InventarisController {
@@ -308,6 +309,16 @@ public class InventarisController {
  
     @FXML
     private void deleteItem(ActionEvent event) {
+        Pegawai user = Session.getCurrentUser();
+
+        if (!user.getRole().equalsIgnoreCase("Admin")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText(null);
+            alert.setContentText("Anda tidak memiliki hak akses untuk menghapus barang.");
+            alert.showAndWait();
+            return;
+        }
+        
         if (selectedBarang == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Peringatan");

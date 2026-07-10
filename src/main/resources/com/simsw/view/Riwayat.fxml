@@ -86,7 +86,29 @@
          </padding>
       </VBox>
    </left>
-   <bottom>
+      <bottom>
+      <VBox prefHeight="356.0" prefWidth="929.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
+         </padding>
+         <children>
+            <!-- Komponen TableView yang sempat hilang/terpotong -->
+            <TableView fx:id="riwayatTable" prefHeight="320.0" prefWidth="899.0">
+              <columns>
+                <TableColumn fx:id="colTimestamp" prefWidth="150.0" text="Waktu / Tanggal" />
+                <TableColumn fx:id="colNama" prefWidth="150.0" text="Nama Pegawai" />
+                <TableColumn fx:id="colItem" prefWidth="150.0" text="Nama Barang" />
+                <TableColumn fx:id="colKeterangan" prefWidth="200.0" text="Keterangan" />
+                <TableColumn fx:id="colOldValue" prefWidth="120.0" text="Jumlah Lama" />
+                <TableColumn fx:id="colNewValue" prefWidth="120.0" text="Jumlah Baru" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>
+
+   <!-- <bottom>
       <VBox prefHeight="356.0" prefWidth="929.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER_LEFT" spacing="10.0">
@@ -110,4 +132,4 @@
          </padding>
       </VBox>
    </bottom>
-</BorderPane>
+</BorderPane> -->

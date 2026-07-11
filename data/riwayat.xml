@@ -1,5 +1,23 @@
 <riwayatList>
   <riwayat>
+    <id>31</id>
+    <waktu>11-07-2026 10:11:17</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Bumbu Garam</namaBarang>
+    <stokLama>5</stokLama>
+    <stokBaru>4</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>30</id>
+    <waktu>11-07-2026 10:11:09</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Indomie Kari</namaBarang>
+    <stokLama>5</stokLama>
+    <stokBaru>6</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
     <id>29</id>
     <waktu>11-07-2026 00:25:58</waktu>
     <aktivitas>Update Barang</aktivitas>

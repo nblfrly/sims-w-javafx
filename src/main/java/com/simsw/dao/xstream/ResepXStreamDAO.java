@@ -122,4 +122,45 @@ public class ResepXStreamDAO {
         }
         return hasil;
     }
+
+    public Resep getResepById(int id){
+        for(Resep r : loadResep()){
+            if(r.getId()==id){
+                return r;
+            }
+        }
+        return null;
+    }
+
+    public List<Resep> getResepByBarang(int idBarang){
+        List<Resep> hasil=new ArrayList<>();
+        for(Resep r:loadResep()){
+            if(r.getIdBarang()==idBarang){
+                hasil.add(r);
+            }
+        }
+        return hasil;
+    }
+
+    public boolean exists(int idMenu,int idBarang){
+        for(Resep r:loadResep()){
+            if(r.getIdMenu()==idMenu &&
+            r.getIdBarang()==idBarang){
+                return true;
+            }
+        }
+        return false;
+    }
+
+        public void deleteByMenu(int idMenu){
+        List<Resep> list=loadResep();
+        list.removeIf(r->r.getIdMenu()==idMenu);
+        saveResep(list);
+    }
+
+    public void deleteByBarang(int idBarang){
+        List<Resep> list=loadResep();
+        list.removeIf(r->r.getIdBarang()==idBarang);
+        saveResep(list);
+    }
 }

@@ -108,7 +108,7 @@
     <id>23</id>
     <namaBarang>Indomie Kari</namaBarang>
     <kategori>Mie</kategori>
-    <stok>5</stok>
+    <stok>6</stok>
     <stokMinimum>4</stokMinimum>
   </barang>
   <barang>
@@ -276,7 +276,7 @@
     <id>47</id>
     <namaBarang>Bumbu Garam</namaBarang>
     <kategori>Topping</kategori>
-    <stok>5</stok>
+    <stok>4</stok>
     <stokMinimum>4</stokMinimum>
   </barang>
   <barang>

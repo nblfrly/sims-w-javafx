@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import com.simsw.dao.xstream.PegawaiXStreamDAO;
 import com.simsw.model.Pegawai;
-import com.simsw.utill.Session;
+import com.simsw.util.Session;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

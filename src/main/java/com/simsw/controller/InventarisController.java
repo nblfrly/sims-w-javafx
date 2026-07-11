@@ -29,10 +29,10 @@ import com.simsw.dao.xstream.BarangXStreamDAO;
 import com.simsw.dao.xstream.RiwayatXStreamDAO;
 import com.simsw.dao.dom.BarangXMLDAO;
 import com.simsw.dao.mysql.BarangDAO;
-import com.simsw.utill.Session;
 import com.simsw.model.Barang;
 import com.simsw.model.Pegawai;
 import com.simsw.model.Riwayat;
+import com.simsw.util.Session;
 
 public class InventarisController {
 
@@ -177,9 +177,9 @@ public class InventarisController {
     }
 
     private String getUserLog() {
-        return com.simsw.utill.Session.getCurrentUser().getNama()
+        return com.simsw.util.Session.getCurrentUser().getNama()
                 + " ("
-                + com.simsw.utill.Session.getCurrentUser().getRole()
+                + com.simsw.util.Session.getCurrentUser().getRole()
                 + ")";
     }
 

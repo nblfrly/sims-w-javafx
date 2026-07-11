@@ -1,4 +1,4 @@
-package com.simsw.utill;
+package com.simsw.util;
 
 import com.simsw.model.Pegawai;
 

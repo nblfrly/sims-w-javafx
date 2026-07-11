@@ -9,17 +9,14 @@ public class Resep {
     public Resep() {
     }
 
-    public Resep(int id,
-                 int idMenu,
-                 int idBarang,
-                 int jumlahPakai) {
-
+    public Resep(int id, int idMenu, int idBarang, int jumlahPakai) {
         this.id = id;
         this.idMenu = idMenu;
         this.idBarang = idBarang;
         this.jumlahPakai = jumlahPakai;
     }
 
+    // Getter & Setter
     public int getId() {
         return id;
     }
@@ -27,6 +24,7 @@ public class Resep {
     public void setId(int id) {
         this.id = id;
     }
+
 
     public int getIdMenu() {
         return idMenu;
@@ -36,6 +34,7 @@ public class Resep {
         this.idMenu = idMenu;
     }
 
+
     public int getIdBarang() {
         return idBarang;
     }
@@ -44,11 +43,23 @@ public class Resep {
         this.idBarang = idBarang;
     }
 
+
     public int getJumlahPakai() {
         return jumlahPakai;
     }
 
     public void setJumlahPakai(int jumlahPakai) {
         this.jumlahPakai = jumlahPakai;
+    }
+
+    // Utility
+    @Override
+    public String toString() {
+        return "Resep{" +
+                "id=" + id +
+                ", idMenu=" + idMenu +
+                ", idBarang=" + idBarang +
+                ", jumlahPakai=" + jumlahPakai +
+                '}';
     }
 }

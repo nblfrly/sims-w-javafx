@@ -18,11 +18,11 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import com.simsw.utill.Session;
 import com.simsw.dao.xstream.BarangXStreamDAO;
 import com.simsw.dao.xstream.RiwayatXStreamDAO;
 import com.simsw.model.Barang;
 import com.simsw.model.Riwayat;
+import com.simsw.util.Session;
 
 public class DashboardController implements Initializable {
     @FXML

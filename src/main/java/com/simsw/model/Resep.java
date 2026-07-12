@@ -4,55 +4,69 @@ public class Resep {
     private int id;
     private int idMenu;
     private int idBarang;
-    private int jumlahPakai;
+    private double jumlahPakai;
+    private String satuan;
 
     public Resep() {
     }
 
-    public Resep(int id, int idMenu, int idBarang, int jumlahPakai) {
+    public Resep(int id,
+                 int idMenu,
+                 int idBarang,
+                 double jumlahPakai,
+                 String satuan) {
+
         this.id = id;
         this.idMenu = idMenu;
         this.idBarang = idBarang;
         this.jumlahPakai = jumlahPakai;
+        this.satuan = satuan;
     }
 
-    // Getter & Setter
+ 
+    // Getter
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
     public int getIdMenu() {
         return idMenu;
+    }
+
+    public int getIdBarang() {
+        return idBarang;
+    }
+
+    public double getJumlahPakai() {
+        return jumlahPakai;
+    }
+
+    public String getSatuan() {
+        return satuan;
+    }
+
+    // Setter
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setIdMenu(int idMenu) {
         this.idMenu = idMenu;
     }
 
-
-    public int getIdBarang() {
-        return idBarang;
-    }
-
     public void setIdBarang(int idBarang) {
         this.idBarang = idBarang;
     }
 
-
-    public int getJumlahPakai() {
-        return jumlahPakai;
-    }
-
-    public void setJumlahPakai(int jumlahPakai) {
+    public void setJumlahPakai(double jumlahPakai) {
         this.jumlahPakai = jumlahPakai;
     }
 
-    // Utility
+    public void setSatuan(String satuan) {
+        this.satuan = satuan;
+    }
+
+    // toString
     @Override
     public String toString() {
         return "Resep{" +
@@ -60,6 +74,8 @@ public class Resep {
                 ", idMenu=" + idMenu +
                 ", idBarang=" + idBarang +
                 ", jumlahPakai=" + jumlahPakai +
+                ", satuan='" + satuan + '\'' +
                 '}';
     }
+
 }

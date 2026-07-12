@@ -13,236 +13,215 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simsw.controller.RiwayatController">
-
-    <!-- ================= HEADER ================= -->
-
-    <top>
-        <HBox alignment="CENTER_LEFT" prefHeight="70" spacing="15" style="-fx-background-color:#C62828;">
-
-            <padding>
-                <Insets left="20" right="20" />
-            </padding>
-
-            <children>
-
-                <Button fx:id="btnDashboard" onAction="#backDashboard" style="-fx-background-color:white;                                -fx-text-fill:#D32F2F;                                -fx-font-weight:bold;                                -fx-background-radius:8;" text="🏠 Dashboard" />
-
-                <Label text="WarMis | Riwayat Perubahan Inventaris" textFill="WHITE">
-
-                    <font>
-                        <Font size="24" />
-                    </font>
-
-                </Label>
-
-            </children>
-
-        </HBox>
-    </top>
-
-    <!-- ================= CONTENT ================= -->
-
-    <center>
-
-        <VBox spacing="18" style="-fx-background-color:#F4F6F9;">
-
-            <padding>
-                <Insets bottom="18" left="18" right="18" top="20" />
-            </padding>
-
-            <!-- ================= CARD ================= -->
-
-            <HBox spacing="15">
-
-                <children>
-
-                    <VBox prefWidth="240" spacing="6" style="-fx-background-color:white;                                  -fx-background-radius:10;                                  -fx-border-color:#DDDDDD;                                  -fx-border-radius:10;">
-
-                        <padding>
-                            <Insets bottom="15" left="15" top="15" />
-                        </padding>
-
-                        <children>
-
-                            <Label text="Total Log" />
-
-                            <Label fx:id="lblTotalLog" text="0">
-
-                                <font>
-                                    <Font size="28" />
-                                </font>
-
-                            </Label>
-
-                        </children>
-
-                    </VBox>
-
-                    <VBox prefWidth="240" spacing="6" style="-fx-background-color:white;                                  -fx-background-radius:10;                                  -fx-border-color:#DDDDDD;                                  -fx-border-radius:10;">
-
-                        <padding>
-                            <Insets bottom="15" left="15" top="15" />
-                        </padding>
-
-                        <children>
-
-                            <Label text="Tambah Barang" />
-
-                            <Label fx:id="lblTambah" text="0">
-
-                                <font>
-                                    <Font size="28" />
-                                </font>
-
-                            </Label>
-
-                        </children>
-
-                    </VBox>
-
-                    <VBox prefWidth="240" spacing="6" style="-fx-background-color:white;                                  -fx-background-radius:10;                                  -fx-border-color:#DDDDDD;                                  -fx-border-radius:10;">
-
-                        <padding>
-                            <Insets bottom="15" left="15" top="15" />
-                        </padding>
-
-                        <children>
-
-                            <Label text="Update Barang" />
-
-                            <Label fx:id="lblUpdate" text="0">
-
-                                <font>
-                                    <Font size="28" />
-                                </font>
-
-                            </Label>
-
-                        </children>
-
-                    </VBox>
-
-                    <VBox prefWidth="240" spacing="6" style="-fx-background-color:white;                                  -fx-background-radius:10;                                  -fx-border-color:#DDDDDD;                                  -fx-border-radius:10;">
-
-                        <padding>
-                            <Insets bottom="15" left="15" top="15" />
-                        </padding>
-
-                        <children>
-
-                            <Label text="Hapus Barang" />
-
-                            <Label fx:id="lblHapus" text="0">
-
-                                <font>
-                                    <Font size="28" />
-                                </font>
-
-                            </Label>
-
-                        </children>
-
-                    </VBox>
-
-                </children>
-
-            </HBox>
-
-            <!-- ================= FILTER ================= -->
-
-            <Label text="Filter Riwayat">
-
-                <font>
-                    <Font name="System Bold" size="16" />
-                </font>
-
+<BorderPane prefHeight="700.0" prefWidth="1150.0" style="-fx-background-color: #FFFDFD;" 
+            xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.simsw.controller.RiwayatController">
+   
+   <!-- ================= HEADER WARMINDO RED ================= -->
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="75.0" spacing="15" 
+            style="-fx-background-color: #BE123C; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);" 
+            BorderPane.alignment="CENTER">
+         <padding>
+            <Insets left="30.0" right="30.0" />
+         </padding>
+         <children>
+            <Label text="WarMis" textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
+               <style>-fx-font-weight: 900;</style>
             </Label>
-
-            <HBox alignment="BOTTOM_LEFT" spacing="12">
-
-                <children>
-
-                    <VBox spacing="5">
-
-                        <children>
-
-                            <Label text="Tanggal" />
-
-                            <DatePicker fx:id="tanggalFilter" prefWidth="180" />
-
-                        </children>
-
-                    </VBox>
-
-                    <VBox spacing="5">
-
-                        <children>
-
-                            <Label text="Aktivitas" />
-
-                            <ComboBox fx:id="aktivitasFilter" prefWidth="180" promptText="Semua Aktivitas" />
-
-                        </children>
-
-                    </VBox>
-
-                    <VBox spacing="5" HBox.hgrow="ALWAYS">
-
-                        <children>
-
-                            <Label text="Cari Barang / User" />
-
-                            <TextField fx:id="txtCari" prefWidth="320" promptText="🔍 Cari barang atau user..." />
-
-                        </children>
-
-                    </VBox>
-
-                    <Button fx:id="btnReset" onAction="#resetFilter" prefWidth="140" style="-fx-background-color:#F57C00;                                    -fx-text-fill:white;                                    -fx-font-weight:bold;                                    -fx-background-radius:8;" text="Reset Filter" />
-
-                    <Button fx:id="btnExport" onAction="#exportCSV" prefWidth="140" style="-fx-background-color:#388E3C;                                    -fx-text-fill:white;                                    -fx-font-weight:bold;                                    -fx-background-radius:8;" text="Export Excel" />
-
-                </children>
-
-            </HBox>
-
-            <!-- ================= TABLE ================= -->
-
-            <Label text="Audit Log Inventaris">
-
-                <font>
-                    <Font name="System Bold" size="16" />
-                </font>
-
+            <Label text="|" textFill="#FDA4AF">
+               <font>
+                  <Font size="20.0" />
+               </font>
             </Label>
-
-            <TableView fx:id="tableRiwayat" VBox.vgrow="ALWAYS">
-
-                <columns>
-
-                    <TableColumn fx:id="colWaktu" prefWidth="185" text="Waktu" />
-
-                    <TableColumn fx:id="colAktivitas" prefWidth="150" text="Aktivitas" />
-
-                    <TableColumn fx:id="colBarang" prefWidth="250" text="Nama Barang" />
-
-                    <TableColumn fx:id="colStokLama" prefWidth="100" text="Stok Lama" />
-
-                    <TableColumn fx:id="colStokBaru" prefWidth="100" text="Stok Baru" />
-
-                    <TableColumn fx:id="colUser" prefWidth="180" text="User" />
-
-                </columns>
-
-                <placeholder>
-                    <Label text="Belum ada aktivitas yang tercatat." />
-                </placeholder>
-
-            </TableView>
-
-        </VBox>
-
-    </center>
-
+            <Label text="Riwayat Perubahan Inventaris" textFill="#FFE4E6">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <style>-fx-font-weight: 500;</style>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   
+   <!-- ================= SIDEBAR MENU ================= -->
+   <left>
+      <fx:include source="Sidebar.fxml" />
+   </left>
+   
+   <!-- ================= MAIN CONTENT AREA ================= -->
+   <center>
+      <VBox spacing="20.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+         <children>
+            
+            <!-- ================= METRIC CARDS OVERVIEW ================= -->
+            <HBox spacing="16.0">
+               <children>
+                  <!-- Card 1: Total Log -->
+                  <VBox prefWidth="250.0" spacing="4.0" HBox.hgrow="ALWAYS"
+                        style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #E2E8F0; -fx-border-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);">
+                     <padding>
+                        <Insets bottom="16.0" left="20.0" right="20.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <Label text="Total Aktivitas Log" textFill="#000000">
+                           <style>-fx-font-weight: 700; -fx-font-size: 12;</style>
+                        </Label>
+                        <Label fx:id="lblTotalLog" text="0" textFill="#0F172A">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                           <style>-fx-font-weight: 800;</style>
+                        </Label>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Card 2: Tambah -->
+                  <VBox prefWidth="250.0" spacing="4.0" HBox.hgrow="ALWAYS"
+                        style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #E2E8F0; -fx-border-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);">
+                     <padding>
+                        <Insets bottom="16.0" left="20.0" right="20.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <Label text="Aktivitas Tambah" textFill="#000000">
+                           <style>-fx-font-weight: 700; -fx-font-size: 12;</style>
+                        </Label>
+                        <Label fx:id="lblTambah" text="0" textFill="#0F172A">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                           <style>-fx-font-weight: 800;</style>
+                        </Label>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Card 3: Update -->
+                  <VBox prefWidth="250.0" spacing="4.0" HBox.hgrow="ALWAYS"
+                        style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #E2E8F0; -fx-border-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);">
+                     <padding>
+                        <Insets bottom="16.0" left="20.0" right="20.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <Label text="Aktivitas Perbarui" textFill="#000000">
+                           <style>-fx-font-weight: 700; -fx-font-size: 12;</style>
+                        </Label>
+                        <Label fx:id="lblUpdate" text="0" textFill="#0F172A">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                           <style>-fx-font-weight: 800;</style>
+                        </Label>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Card 4: Hapus -->
+                  <VBox prefWidth="250.0" spacing="4.0" HBox.hgrow="ALWAYS"
+                        style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #E2E8F0; -fx-border-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2);">
+                     <padding>
+                        <Insets bottom="16.0" left="20.0" right="20.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <Label text="Aktivitas Hapus" textFill="#000000">
+                           <style>-fx-font-weight: 700; -fx-font-size: 12;</style>
+                        </Label>
+                        <Label fx:id="lblHapus" text="0" textFill="#0F172A">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                           <style>-fx-font-weight: 800;</style>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            
+            <!-- ================= ADVANCED FILTER CONTROL ================= -->
+            <VBox spacing="10.0" style="-fx-background-color: white; -fx-padding: 18; -fx-background-radius: 12; -fx-border-color: #E2E8F0; -fx-border-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.01), 8, 0, 0, 2);">
+               <children>
+                  <Label text="Panel Filter Riwayat" textFill="#1E293B">
+                     <style>-fx-font-weight: 800; -fx-font-size: 14;</style>
+                  </Label>
+                  <HBox alignment="BOTTOM_LEFT" spacing="12.0">
+                     <children>
+                        <!-- Filter: Tanggal -->
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Tanggal Aktivitas" textFill="#64748B">
+                                 <style>-fx-font-weight: 600; -fx-font-size: 12;</style>
+                              </Label>
+                              <DatePicker fx:id="tanggalFilter" prefHeight="38.0" prefWidth="170.0" 
+                                          style="-fx-background-color: white; -fx-border-color: #CBD5E1; -fx-background-radius: 8; -fx-border-radius: 8;" />
+                           </children>
+                        </VBox>
+                        
+                        <!-- Filter: Jenis Aktivitas -->
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Pilih Aktivitas" textFill="#64748B">
+                                 <style>-fx-font-weight: 600; -fx-font-size: 12;</style>
+                              </Label>
+                              <ComboBox fx:id="aktivitasFilter" prefHeight="38.0" prefWidth="180.0" promptText="Semua Aktivitas" 
+                                        style="-fx-background-color: white; -fx-border-color: #CBD5E1; -fx-background-radius: 8; -fx-border-radius: 8; -fx-padding: 0 4 0 4;" />
+                           </children>
+                        </VBox>
+                        
+                        <!-- Filter: Kata Kunci -->
+                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label text="Cari Nama Barang / Nama User" textFill="#64748B">
+                                 <style>-fx-font-weight: 600; -fx-font-size: 12;</style>
+                              </Label>
+                              <TextField fx:id="txtCari" prefHeight="38.0" promptText="🔍 Masukkan kata kunci pencarian..." 
+                                         style="-fx-background-color: #F8FAFC; -fx-border-color: #CBD5E1; -fx-background-radius: 8; -fx-border-radius: 8; -fx-padding: 0 12 0 12; -fx-text-fill: #1E293B;" />
+                           </children>
+                        </VBox>
+                        
+                        <!-- Tombol Aksi Filter -->
+                        <Button fx:id="btnReset" mnemonicParsing="false" onAction="#resetFilter" prefHeight="38.0" prefWidth="130.0" 
+                                style="-fx-background-color: transparent; -fx-text-fill: #64748B; -fx-border-color: #CBD5E1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;" 
+                                text="🔄  Reset Filter" />
+                        <Button fx:id="btnExport" mnemonicParsing="false" onAction="#exportCSV" prefHeight="38.0" prefWidth="130.0" 
+                                style="-fx-background-color: #10B981; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;" 
+                                text="📥  Export Excel" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+            <!-- ================= AUDIT LOG TABLE ================= -->
+            <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="Audit Log Inventaris" textFill="#1E293B">
+                     <style>-fx-font-weight: 800; -fx-font-size: 15;</style>
+                  </Label>
+                  <TableView fx:id="tableRiwayat" VBox.vgrow="ALWAYS" 
+                             style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #E2E8F0; -fx-border-radius: 12; -fx-padding: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 4);">
+                     <columns>
+                        <TableColumn fx:id="colWaktu" minWidth="150.0" prefWidth="175.0" text="Waktu Transaksi" />
+                        <TableColumn fx:id="colAktivitas" minWidth="110.0" prefWidth="130.0" text="Aktivitas" style="-fx-alignment: CENTER;" />
+                        <TableColumn fx:id="colBarang" minWidth="220.0" prefWidth="260.0" text="Nama Barang" />
+                        <TableColumn fx:id="colStokLama" minWidth="90.0" prefWidth="100.0" text="Stok Lama" style="-fx-alignment: CENTER;" />
+                        <TableColumn fx:id="colStokBaru" minWidth="90.0" prefWidth="100.0" text="Stok Baru" style="-fx-alignment: CENTER;" />
+                        <TableColumn fx:id="colUser" minWidth="140.0" prefWidth="170.0" text="Oleh User" />
+                     </columns>
+                     <placeholder>
+                        <Label text="Belum ada aktivitas yang tercatat." textFill="#94A3B8">
+                           <style>-fx-font-size: 13; -fx-font-weight: 500;</style>
+                        </Label>
+                     </placeholder>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
 </BorderPane>

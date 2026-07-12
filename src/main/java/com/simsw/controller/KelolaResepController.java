@@ -103,7 +103,7 @@ public class KelolaResepController implements Initializable {
         colId.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getId()).asObject());
         colMenu.setCellValueFactory(cell -> new SimpleStringProperty(getNamaMenu(cell.getValue().getIdMenu())));
         colBarang.setCellValueFactory(cell -> new SimpleStringProperty(getNamaBarang(cell.getValue().getIdBarang())));
-        colJumlah.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getJumlahPakai()).asObject());
+        colJumlah.setCellValueFactory(cell -> new SimpleIntegerProperty((int) cell.getValue().getJumlahPakai()).asObject());
         
         refreshTable();
     }
@@ -261,7 +261,7 @@ public class KelolaResepController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simsw/view/Menu.fxml"));
             Parent root = loader.load();
-            
+
             Stage stage = (Stage) btnMenu.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Menu Warmindo");
@@ -270,6 +270,11 @@ public class KelolaResepController implements Initializable {
         catch(Exception e){
             e.printStackTrace();
         }
+    }
+    @FXML
+    private void refreshData(){
+        loadComboBox();
+        refreshTable();
     }
 
     // HELPER METHODS
@@ -308,5 +313,4 @@ public class KelolaResepController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
 }

@@ -259,8 +259,18 @@ public class MenuController {
 
     @FXML
     private void openKelolaResep(ActionEvent event) {
-        // Tulis logika untuk membuka menu resep di sini
         System.out.println("Tombol kelola resep diklik!");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simsw/view/KelolaResep.fxml"));
+            Parent root = loader.load();
+            
+            Stage stage = (Stage) btnKelolaResep.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Kelola Resep");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // DELETE MENU

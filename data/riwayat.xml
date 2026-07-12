@@ -1,5 +1,50 @@
 <riwayatList>
   <riwayat>
+    <id>36</id>
+    <waktu>12-07-2026 09:15:31</waktu>
+    <aktivitas>Penggunaan barang - Indomie Goreng (1 porsi)</aktivitas>
+    <namaBarang>Telur</namaBarang>
+    <stokLama>7</stokLama>
+    <stokBaru>6</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>35</id>
+    <waktu>12-07-2026 09:15:31</waktu>
+    <aktivitas>Penggunaan barang - Indomie Goreng (1 porsi)</aktivitas>
+    <namaBarang>Sawi</namaBarang>
+    <stokLama>5</stokLama>
+    <stokBaru>4</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>34</id>
+    <waktu>12-07-2026 09:15:31</waktu>
+    <aktivitas>Penggunaan barang - Indomie Goreng (1 porsi)</aktivitas>
+    <namaBarang>Indomie Goreng</namaBarang>
+    <stokLama>9</stokLama>
+    <stokBaru>8</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>33</id>
+    <waktu>11-07-2026 21:56:58</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Beras 1kg</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>4</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>32</id>
+    <waktu>11-07-2026 21:56:09</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Nasi</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>7</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
     <id>31</id>
     <waktu>11-07-2026 10:11:17</waktu>
     <aktivitas>Update Barang</aktivitas>

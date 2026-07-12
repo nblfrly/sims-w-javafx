@@ -3,7 +3,7 @@
     <id>1</id>
     <namaBarang>Indomie Goreng</namaBarang>
     <kategori>Mie</kategori>
-    <stok>9</stok>
+    <stok>8</stok>
     <stokMinimum>8</stokMinimum>
   </barang>
   <barang>
@@ -38,7 +38,7 @@
     <id>12</id>
     <namaBarang>Telur</namaBarang>
     <kategori>Topping</kategori>
-    <stok>7</stok>
+    <stok>6</stok>
     <stokMinimum>5</stokMinimum>
   </barang>
   <barang>
@@ -325,7 +325,7 @@
     <id>56</id>
     <namaBarang>Sawi</namaBarang>
     <kategori>Topping</kategori>
-    <stok>5</stok>
+    <stok>4</stok>
     <stokMinimum>4</stokMinimum>
   </barang>
   <barang>
@@ -341,5 +341,19 @@
     <kategori>Topping</kategori>
     <stok>6</stok>
     <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>59</id>
+    <namaBarang>Nasi</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>7</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>60</id>
+    <namaBarang>Beras 1kg</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>4</stok>
+    <stokMinimum>3</stokMinimum>
   </barang>
 </barangList>

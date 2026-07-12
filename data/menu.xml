@@ -67,6 +67,6 @@
     <namaMenu>Good Day Cappuccino</namaMenu>
     <kategori>Minuman</kategori>
     <harga>9000</harga>
-    <status>Aktif</status>
+    <status>Nonaktif</status>
   </menu>
 </menuList>

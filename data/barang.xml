@@ -3,7 +3,7 @@
     <id>1</id>
     <namaBarang>Indomie Goreng</namaBarang>
     <kategori>Mie</kategori>
-    <stok>9</stok>
+    <stok>8</stok>
     <stokMinimum>8</stokMinimum>
   </barang>
   <barang>
@@ -38,7 +38,7 @@
     <id>12</id>
     <namaBarang>Telur</namaBarang>
     <kategori>Topping</kategori>
-    <stok>7</stok>
+    <stok>6</stok>
     <stokMinimum>5</stokMinimum>
   </barang>
   <barang>
@@ -94,7 +94,7 @@
     <id>21</id>
     <namaBarang>Keju</namaBarang>
     <kategori>Topping</kategori>
-    <stok>4</stok>
+    <stok>5</stok>
     <stokMinimum>4</stokMinimum>
   </barang>
   <barang>
@@ -108,7 +108,7 @@
     <id>23</id>
     <namaBarang>Indomie Kari</namaBarang>
     <kategori>Mie</kategori>
-    <stok>4</stok>
+    <stok>6</stok>
     <stokMinimum>4</stokMinimum>
   </barang>
   <barang>
@@ -185,7 +185,7 @@
     <id>34</id>
     <namaBarang>Indomie Goreng Aceh</namaBarang>
     <kategori>Mie</kategori>
-    <stok>4</stok>
+    <stok>5</stok>
     <stokMinimum>3</stokMinimum>
   </barang>
   <barang>
@@ -262,7 +262,7 @@
     <id>45</id>
     <namaBarang>Otak-Otak</namaBarang>
     <kategori>Topping</kategori>
-    <stok>5</stok>
+    <stok>4</stok>
     <stokMinimum>3</stokMinimum>
   </barang>
   <barang>
@@ -276,7 +276,7 @@
     <id>47</id>
     <namaBarang>Bumbu Garam</namaBarang>
     <kategori>Topping</kategori>
-    <stok>5</stok>
+    <stok>4</stok>
     <stokMinimum>4</stokMinimum>
   </barang>
   <barang>
@@ -320,5 +320,40 @@
     <kategori>Topping</kategori>
     <stok>5</stok>
     <stokMinimum>4</stokMinimum>
+  </barang>
+  <barang>
+    <id>56</id>
+    <namaBarang>Sawi</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>4</stok>
+    <stokMinimum>4</stokMinimum>
+  </barang>
+  <barang>
+    <id>57</id>
+    <namaBarang>Teh</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>5</stok>
+    <stokMinimum>4</stokMinimum>
+  </barang>
+  <barang>
+    <id>58</id>
+    <namaBarang>Gula</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>6</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>59</id>
+    <namaBarang>Nasi</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>7</stok>
+    <stokMinimum>5</stokMinimum>
+  </barang>
+  <barang>
+    <id>60</id>
+    <namaBarang>Beras 1kg</namaBarang>
+    <kategori>Topping</kategori>
+    <stok>4</stok>
+    <stokMinimum>3</stokMinimum>
   </barang>
 </barangList>

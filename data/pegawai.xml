@@ -14,17 +14,17 @@
     <role>Admin</role>
   </pegawai>
   <pegawai>
-    <id>3</id>
-    <nama>Rapi</nama>
-    <username>rapi</username>
-    <password>rapi123</password>
-    <role>Pegawai</role>
-  </pegawai>
-  <pegawai>
     <id>4</id>
     <nama>Almer</nama>
     <username>almer</username>
     <password>almer123</password>
+    <role>Pegawai</role>
+  </pegawai>
+  <pegawai>
+    <id>5</id>
+    <nama>Rapi</nama>
+    <username>rapi</username>
+    <password>rapi123</password>
     <role>Pegawai</role>
   </pegawai>
 </pegawaiList>

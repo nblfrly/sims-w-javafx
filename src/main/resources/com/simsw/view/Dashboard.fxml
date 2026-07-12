@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
@@ -13,186 +12,176 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700" prefWidth="1000" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.simsw.controller.DashboardController">
+<BorderPane prefHeight="700" prefWidth="1150" style="-fx-background-color: #FFFDFD;" 
+            xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.simsw.controller.DashboardController">
 
-    <!-- ================= HEADER ================= -->
-
+    <!-- ================= HEADER WARMINDO RED ================= -->
     <top>
-
-        <HBox alignment="CENTER_LEFT" prefHeight="70" style="-fx-background-color:#C62828;">
-
+        <HBox alignment="CENTER_LEFT" prefHeight="75" spacing="15" 
+              style="-fx-background-color: #BE123C;"> <!-- Menggunakan Crimson Red yang mewah -->
             <padding>
-                <Insets left="20" right="20" />
+                <Insets left="30" right="30" />
             </padding>
-
             <children>
-
-                <Label text="SIMS-W | Warmindo Stock Manager" textFill="WHITE">
-
+                <Label text="WarMis" textFill="white">
                     <font>
-                        <Font size="24" />
+                        <Font size="26" />
                     </font>
-
+                    <style>-fx-font-weight: 900;</style>
                 </Label>
-
-                <Region HBox.hgrow="ALWAYS" />
-
-                <Label text="👤 Owner" textFill="WHITE">
-
+                <Label text="|" textFill="#FDA4AF">
+                    <font><Font size="20" /></font>
+                </Label>
+                <Label text="Warmindo Management Information System" textFill="#FFE4E6">
                     <font>
                         <Font size="15" />
                     </font>
-
+                    <style>-fx-font-weight: 500;</style>
                 </Label>
+                <Region HBox.hgrow="ALWAYS" />
                 
-                <Region prefWidth="20" />
-
-                <Button fx:id="btnLogout" onAction="#logout" style="-fx-background-color:white;                                -fx-text-fill:#C62828;                                -fx-font-weight:bold;" text="Logout" />
-
+                <!-- USER CHIP (Semi transparan di atas merah) -->
+                <HBox alignment="CENTER" spacing="10" style="-fx-background-color: rgba(255, 255, 255, 0.15); -fx-background-radius: 30; -fx-padding: 8 16 8 16;">
+                    <children>
+                        <Label fx:id="lblUserInfo" text="👤 Admin | Owner" textFill="white">
+                            <font>
+                                <Font size="14" />
+                            </font>
+                            <style>-fx-font-weight: 600;</style>
+                        </Label>
+                    </children>
+                </HBox>
             </children>
-
         </HBox>
-
     </top>
 
-    <!-- ================= CENTER ================= -->
+    <left>
+        <fx:include source="Sidebar.fxml" />
+    </left>
 
+    <!-- ================= MAIN CONTENT ================= -->
     <center>
-
-        <VBox alignment="TOP_CENTER" spacing="25">
-
+        <VBox alignment="TOP_LEFT" spacing="25">
             <padding>
-                <Insets bottom="25" left="25" right="25" top="25" />
+                <Insets bottom="30" left="35" right="35" top="30" />
             </padding>
-
             <children>
-
-                <Label text="Selamat Datang, Owner!">
-
-                    <font>
-                        <Font size="28" />
-                    </font>
-
-                </Label>
-
-                <!-- CARD -->
-
-                <GridPane alignment="CENTER" hgap="20" vgap="20">
-
+                
+                <!-- WELCOME BANNER -->
+                <VBox spacing="4">
                     <children>
-
-                        <VBox alignment="CENTER" prefHeight="120" prefWidth="220" spacing="10" style="-fx-background-color:white;                                      -fx-background-radius:12;                                      -fx-border-color:#DDDDDD;                                      -fx-border-radius:12;" GridPane.columnIndex="0" GridPane.rowIndex="0">
-
-                            <children>
-
-                                <Label text="📦 Total Barang" />
-
-                                <Label fx:id="lblBarang" text="126">
-
-                                    <font>
-                                        <Font size="32" />
-                                    </font>
-
-                                </Label>
-
-                            </children>
-
-                        </VBox>
-
-                        <VBox alignment="CENTER" prefHeight="120" prefWidth="220" spacing="10" style="-fx-background-color:white;                                      -fx-background-radius:12;                                      -fx-border-color:#DDDDDD;                                      -fx-border-radius:12;" GridPane.columnIndex="1" GridPane.rowIndex="0">
-
-                            <children>
-
-                                <Label text="⚠ Stok Menipis" />
-
-                                <Label fx:id="lblStok" text="7">
-
-                                    <font>
-                                        <Font size="32" />
-                                    </font>
-
-                                </Label>
-
-                            </children>
-
-                        </VBox>
-
-                        <VBox alignment="CENTER" prefHeight="120" prefWidth="220" spacing="10" style="-fx-background-color:white;                                      -fx-background-radius:12;                                      -fx-border-color:#DDDDDD;                                      -fx-border-radius:12;" GridPane.columnIndex="0" GridPane.rowIndex="1">
-
-                            <children>
-
-                                <Label text="📂 Total Kategori" />
-
-                                <Label fx:id="lblKategori" text="8">
-
-                                    <font>
-                                        <Font size="32" />
-                                    </font>
-
-                                </Label>
-
-                            </children>
-
-                        </VBox>
-
-                        <VBox alignment="CENTER" prefHeight="120" prefWidth="220" spacing="10" style="-fx-background-color:white;                                      -fx-background-radius:12;                                      -fx-border-color:#DDDDDD;                                      -fx-border-radius:12;" GridPane.columnIndex="1" GridPane.rowIndex="1">
-
-                            <children>
-
-                                <Label text="📜 Aktivitas Hari Ini" />
-
-                                <Label fx:id="lblAktivitas" text="18">
-
-                                    <font>
-                                        <Font size="32" />
-                                    </font>
-
-                                </Label>
-
-                            </children>
-
-                        </VBox>
-
+                        <Label fx:id="lblWelcome" text="Selamat Datang Kembali 👋" textFill="#0F172A">
+                            <font>
+                                <Font size="28" />
+                            </font>
+                            <style>-fx-font-weight: 800;</style>
+                        </Label>
+                        <Label fx:id="lblTanggal" text="Senin, 13 Juli 2026" textFill="#64748B">
+                            <font>
+                                <Font size="14" />
+                            </font>
+                            <style>-fx-font-weight: 500;</style>
+                        </Label>
                     </children>
-               <columnConstraints>
-                  <ColumnConstraints />
-                  <ColumnConstraints />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints />
-                  <RowConstraints />
-               </rowConstraints>
+                </VBox>
 
+                <!-- ================= DASHBOARD CARDS ================= -->
+                <GridPane hgap="20" maxWidth="1100" vgap="20">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="33.33" />
+                        <ColumnConstraints percentWidth="33.33" />
+                        <ColumnConstraints percentWidth="33.33" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints prefHeight="100" />
+                        <RowConstraints prefHeight="100" />
+                    </rowConstraints>
+                    <children>
+                        
+                        <!-- CARD 1: Total Barang -->
+                        <HBox alignment="CENTER_LEFT" spacing="18" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 10, 0, 0, 4); -fx-border-color: #E2E8F0; -fx-border-radius: 16;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <children>
+                                <VBox alignment="CENTER" minHeight="55" minWidth="55" style="-fx-background-color: #EFF6FF; -fx-background-radius: 12;">
+                                    <Label text="📦" style="-fx-font-size: 24;" />
+                                </VBox>
+                                <VBox alignment="CENTER_LEFT" spacing="2">
+                                    <Label text="Total Barang" textFill="#64748B" style="-fx-font-size: 13; -fx-font-weight: 600;" />
+                                    <Label fx:id="lblBarang" text="124" textFill="#1E293B" style="-fx-font-size: 26; -fx-font-weight: 800;" />
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <!-- CARD 2: Total Menu -->
+                        <HBox alignment="CENTER_LEFT" spacing="18" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 10, 0, 0, 4); -fx-border-color: #E2E8F0; -fx-border-radius: 16;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <children>
+                                <VBox alignment="CENTER" minHeight="55" minWidth="55" style="-fx-background-color: #FFF7ED; -fx-background-radius: 12;">
+                                    <Label text="🍜" style="-fx-font-size: 24;" />
+                                </VBox>
+                                <VBox alignment="CENTER_LEFT" spacing="2">
+                                    <Label text="Total Menu" textFill="#64748B" style="-fx-font-size: 13; -fx-font-weight: 600;" />
+                                    <Label fx:id="lblMenu" text="42" textFill="#1E293B" style="-fx-font-size: 26; -fx-font-weight: 800;" />
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <!-- CARD 3: Total Pegawai -->
+                        <HBox alignment="CENTER_LEFT" spacing="18" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 10, 0, 0, 4); -fx-border-color: #E2E8F0; -fx-border-radius: 16;" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                            <children>
+                                <VBox alignment="CENTER" minHeight="55" minWidth="55" style="-fx-background-color: #EEF2F6; -fx-background-radius: 12;">
+                                    <Label text="👥" style="-fx-font-size: 24;" />
+                                </VBox>
+                                <VBox alignment="CENTER_LEFT" spacing="2">
+                                    <Label text="Total Pegawai" textFill="#64748B" style="-fx-font-size: 13; -fx-font-weight: 600;" />
+                                    <Label fx:id="lblPegawai" text="8" textFill="#1E293B" style="-fx-font-size: 26; -fx-font-weight: 800;" />
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <!-- CARD 4: Stok Menipis -->
+                        <HBox alignment="CENTER_LEFT" spacing="18" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 10, 0, 0, 4); -fx-border-color: #E2E8F0; -fx-border-radius: 16;" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <children>
+                                <VBox alignment="CENTER" minHeight="55" minWidth="55" style="-fx-background-color: #FEF2F2; -fx-background-radius: 12;">
+                                    <Label text="⚠" style="-fx-font-size: 24;" />
+                                </VBox>
+                                <VBox alignment="CENTER_LEFT" spacing="2">
+                                    <Label text="Stok Menipis" textFill="#64748B" style="-fx-font-size: 13; -fx-font-weight: 600;" />
+                                    <Label fx:id="lblStok" text="3" textFill="#EF4444" style="-fx-font-size: 26; -fx-font-weight: 800;" />
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <!-- CARD 5: Total Kategori -->
+                        <HBox alignment="CENTER_LEFT" spacing="18" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 10, 0, 0, 4); -fx-border-color: #E2E8F0; -fx-border-radius: 16;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <children>
+                                <VBox alignment="CENTER" minHeight="55" minWidth="55" style="-fx-background-color: #F5F3FF; -fx-background-radius: 12;">
+                                    <Label text="📂" style="-fx-font-size: 24;" />
+                                </VBox>
+                                <VBox alignment="CENTER_LEFT" spacing="2">
+                                    <Label text="Total Kategori" textFill="#64748B" style="-fx-font-size: 13; -fx-font-weight: 600;" />
+                                    <Label fx:id="lblKategori" text="6" textFill="#1E293B" style="-fx-font-size: 26; -fx-font-weight: 800;" />
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <!-- CARD 6: Aktivitas Hari Ini -->
+                        <HBox alignment="CENTER_LEFT" spacing="18" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 10, 0, 0, 4); -fx-border-color: #E2E8F0; -fx-border-radius: 16;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                            <children>
+                                <VBox alignment="CENTER" minHeight="55" minWidth="55" style="-fx-background-color: #F0FDF4; -fx-background-radius: 12;">
+                                    <Label text="📜" style="-fx-font-size: 24;" />
+                                </VBox>
+                                <VBox alignment="CENTER_LEFT" spacing="2">
+                                    <Label text="Aktivitas Hari Ini" textFill="#64748B" style="-fx-font-size: 13; -fx-font-weight: 600;" />
+                                    <Label fx:id="lblAktivitas" text="18" textFill="#1E293B" style="-fx-font-size: 26; -fx-font-weight: 800;" />
+                                </VBox>
+                            </children>
+                        </HBox>
+                        
+                    </children>
                 </GridPane>
-
-                <Separator prefWidth="945.0" />
-
-                <Label text="Akses Cepat">
-
-                    <font>
-                        <Font size="20" />
-                    </font>
-
-                </Label>
-
-                <HBox alignment="CENTER" spacing="20">
-
-                    <children>
-
-                        <Button fx:id="btnInventaris" onAction="#openInventaris" prefHeight="50" prefWidth="180" text="📦 Inventaris" />
-
-                        <Button fx:id="btnRiwayat" onAction="#openRiwayat" prefHeight="50" prefWidth="180" text="📜 Riwayat" />
-
-                        <Button fx:id="btnPegawai" onAction="#openPegawai" prefHeight="50" prefWidth="220" text="👥 Manajemen Pegawai" />
-
-                    </children>
-
-                </HBox>
-
+                
+                <Separator maxWidth="1100" style="-fx-opacity: 0.6;" />
             </children>
-
         </VBox>
-
     </center>
-
 </BorderPane>

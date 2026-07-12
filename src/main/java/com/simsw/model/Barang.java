@@ -58,4 +58,9 @@ public class Barang {
     public void setStokMinimum(int stokMinimum) {
         this.stokMinimum = stokMinimum;
     }
+
+    @Override
+    public String toString() {
+        return namaBarang;
+    }
 }

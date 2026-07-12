@@ -166,9 +166,17 @@ public class InventarisController {
                 }
 
                 String keyword = newValue.toLowerCase();
-
+                String status;
+                if (barang.getStok() == 0) {
+                    status = "habis";
+                } else if (barang.getStok() <= barang.getStokMinimum()) {
+                    status = "menipis";
+                } else {
+                    status = "aman";
+                }
                 return barang.getNamaBarang().toLowerCase().contains(keyword)
-                        || barang.getKategori().toLowerCase().contains(keyword);
+                        || barang.getKategori().toLowerCase().contains(keyword)
+                        || status.toLowerCase().contains(keyword);
             });
         });
 

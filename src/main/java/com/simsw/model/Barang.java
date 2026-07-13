@@ -63,4 +63,14 @@ public class Barang {
     public String toString() {
         return namaBarang;
     }
+
+    public String getStatus() {
+        if (stok == 0) {
+            return "Habis";
+        } else if (stok <= stokMinimum) {
+            return "Menipis";
+        } else {
+            return "Aman";
+        }
+    }
 }

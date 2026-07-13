@@ -165,7 +165,8 @@ public class InventarisController {
         filteredData.setPredicate(barang -> {
             boolean cocokPencarian = keyword.isBlank()
                     || barang.getNamaBarang().toLowerCase(Locale.ROOT).contains(keyword)
-                    || barang.getKategori().toLowerCase(Locale.ROOT).contains(keyword);
+                    || barang.getKategori().toLowerCase(Locale.ROOT).contains(keyword)
+                    || barang.getStatus().toLowerCase(Locale.ROOT).contains(keyword);
             boolean stokMenipis = !stokMenipisOnly || barang.getStok() <= barang.getStokMinimum();
             return cocokPencarian && stokMenipis;
         });

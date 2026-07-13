@@ -3,7 +3,7 @@
     <id>1</id>
     <namaBarang>Indomie Goreng</namaBarang>
     <kategori>Mie</kategori>
-    <stok>6</stok>
+    <stok>7</stok>
     <stokMinimum>8</stokMinimum>
   </barang>
   <barang>
@@ -355,5 +355,12 @@
     <kategori>Topping</kategori>
     <stok>4</stok>
     <stokMinimum>3</stokMinimum>
+  </barang>
+  <barang>
+    <id>61</id>
+    <namaBarang>Roti</namaBarang>
+    <kategori>Snack</kategori>
+    <stok>6</stok>
+    <stokMinimum>5</stokMinimum>
   </barang>
 </barangList>

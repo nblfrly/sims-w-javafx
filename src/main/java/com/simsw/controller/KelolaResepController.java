@@ -10,6 +10,7 @@ import com.simsw.model.Resep;
 import java.net.URL;
 import com.simsw.util.AlertHelper;
 import com.simsw.util.SceneNavigator;
+import com.simsw.util.Session;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -145,6 +146,10 @@ public class KelolaResepController implements Initializable {
     // SAVE / INSERT / UPDATE
     @FXML
     private void saveResep() {
+        if (!isAdmin()) {
+            showWarning("Anda tidak memiliki hak akses untuk menambah atau memperbarui resep.");
+            return;
+        }
         try {
             if (!validasiInput()) {
                 return;
@@ -190,6 +195,10 @@ public class KelolaResepController implements Initializable {
     // DELETE
     @FXML
     private void deleteResep() {
+        if (!isAdmin()) {
+            showWarning("Anda tidak memiliki hak akses untuk menghapus resep.");
+            return;
+        }
         if (selectedResep == null) {
             showWarning("Pilih resep terlebih dahulu.");
             return;
@@ -313,5 +322,9 @@ public class KelolaResepController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private boolean isAdmin() {
+        return Session.isLogin() && "Admin".equalsIgnoreCase(Session.getCurrentUser().getRole());
     }
 }

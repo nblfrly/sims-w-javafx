@@ -4,6 +4,7 @@ import com.simsw.dao.xstream.MenuXStreamDAO;
 import com.simsw.model.Menu;
 import com.simsw.util.AlertHelper;
 import com.simsw.util.SceneNavigator;
+import com.simsw.util.Session;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
@@ -213,6 +214,10 @@ public class MenuController {
 
     @FXML
     private void saveMenu(ActionEvent event) {
+        if (!isAdmin()) {
+            AlertHelper.showWarning("Anda tidak memiliki hak akses untuk menambah atau memperbarui menu warmindo.");
+            return;
+        }
         try {
             String namaMenu = cmbNamaMenu.getEditor().getText().trim();
             String kategori = cmbKategori.getEditor().getText().trim();
@@ -260,6 +265,10 @@ public class MenuController {
 
     @FXML
     private void deleteMenu(ActionEvent event) {
+        if (!isAdmin()) {
+            AlertHelper.showWarning("Anda tidak memiliki hak akses untuk menghapus menu warmindo.");
+            return;
+        }
         if (selectedMenu == null) {
             AlertHelper.showWarning("Pilih menu yang ingin dihapus.");
             return;
@@ -290,5 +299,9 @@ public class MenuController {
         } catch (Exception exception) {
             AlertHelper.showError("Halaman kelola resep tidak dapat dibuka.");
         }
+    }
+
+    private boolean isAdmin() {
+        return Session.isLogin() && "Admin".equalsIgnoreCase(Session.getCurrentUser().getRole());
     }
 }

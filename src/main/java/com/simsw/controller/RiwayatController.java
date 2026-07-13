@@ -6,6 +6,7 @@ import java.io.IOException;
 import com.simsw.dao.xstream.RiwayatXStreamDAO;
 import com.simsw.model.Riwayat;
 import com.simsw.util.SceneNavigator;
+import com.simsw.util.Session;
 import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -110,6 +111,11 @@ public class RiwayatController implements Initializable {
 
         loadTable();
         setupFilter();
+
+        if (Session.isLogin() && "Pegawai".equalsIgnoreCase(Session.getCurrentUser().getRole())) {
+            btnExport.setVisible(false);
+            btnExport.setManaged(false);
+        }
     }
 
     private void loadTable() {

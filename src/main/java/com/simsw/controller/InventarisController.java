@@ -234,6 +234,10 @@ public class InventarisController {
 
     @FXML
     private void saveItem(ActionEvent event) {
+        if (!isAdmin()) {
+            AlertHelper.showWarning("Anda tidak memiliki hak akses untuk menambah atau memperbarui inventaris.");
+            return;
+        }
         try {
             String nama = cmbNama.getEditor().getText().trim();
             String kategori = categoryCombo.getEditor().getText().trim();
@@ -246,6 +250,10 @@ public class InventarisController {
             }
             if (stok < 0 || stokMinimum < 0) {
                 AlertHelper.showWarning("Stok dan batas minimum tidak boleh negatif.");
+                return;
+            }
+            if (categoryOptions.stream().noneMatch(item -> item.equalsIgnoreCase(kategori))
+                    && !confirmNewCategory(kategori)) {
                 return;
             }
 
@@ -287,8 +295,8 @@ public class InventarisController {
 
     @FXML
     private void deleteItem(ActionEvent event) {
-        if (Session.isLogin() && !"Admin".equalsIgnoreCase(Session.getCurrentUser().getRole())) {
-            AlertHelper.showWarning("Anda tidak memiliki hak akses untuk menghapus barang.");
+        if (!isAdmin()) {
+            AlertHelper.showWarning("Anda tidak memiliki hak akses untuk menghapus inventaris.");
             return;
         }
         if (selectedBarang == null) {
@@ -321,5 +329,17 @@ public class InventarisController {
         return Session.isLogin()
                 ? Session.getCurrentUser().getNama() + " (" + Session.getCurrentUser().getRole() + ")"
                 : "Sistem";
+    }
+
+    private boolean isAdmin() {
+        return Session.isLogin() && "Admin".equalsIgnoreCase(Session.getCurrentUser().getRole());
+    }
+
+    private boolean confirmNewCategory(String kategori) {
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmation.setTitle("Kategori Baru");
+        confirmation.setHeaderText("Kategori '" + kategori + "' belum tersedia.");
+        confirmation.setContentText("Tambahkan kategori baru ini ke inventaris?");
+        return confirmation.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK;
     }
 }

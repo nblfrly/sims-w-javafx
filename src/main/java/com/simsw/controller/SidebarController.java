@@ -33,9 +33,6 @@ public class SidebarController {
     @FXML
     private void initialize() {
         enableHover(btnDashboard, btnInventaris, btnMenu, btnPenggunaan, btnRiwayat, btnPegawai, btnLogout);
-        if (Session.isLogin() && "Pegawai".equalsIgnoreCase(Session.getCurrentUser().getRole())) {
-            btnPegawai.setDisable(true);
-        }
         setActiveButton();
     }
 

@@ -30,7 +30,9 @@ import com.simsw.dao.xstream.RiwayatXStreamDAO;
 import com.simsw.dao.dom.BarangXMLDAO;
 import com.simsw.dao.mysql.BarangDAO;
 import com.simsw.model.Barang;
+import com.simsw.model.Pegawai;
 import com.simsw.model.Riwayat;
+import com.simsw.util.Session;
 
 public class InventarisController {
 
@@ -174,6 +176,13 @@ public class InventarisController {
         addButton.setText("Add Item");
     }
 
+    private String getUserLog() {
+        return com.simsw.util.Session.getCurrentUser().getNama()
+                + " ("
+                + com.simsw.util.Session.getCurrentUser().getRole()
+                + ")";
+    }
+
     @FXML
     private void saveItem(ActionEvent event) {
         try {
@@ -227,7 +236,7 @@ public class InventarisController {
                             nama,
                             stokLama,
                             stokBaru,
-                            "Admin"
+                            getUserLog()
                     );
                     riwayatDAO.insertRiwayat(riwayat);
                 }
@@ -254,7 +263,7 @@ public class InventarisController {
                             nama,
                             stokLama,
                             stokBaru,
-                            "Admin"
+                            getUserLog()
                     );
                     riwayatDAO.insertRiwayat(riwayat);
                 }
@@ -298,10 +307,18 @@ public class InventarisController {
         }
     }
  
-
-
     @FXML
     private void deleteItem(ActionEvent event) {
+        Pegawai user = Session.getCurrentUser();
+
+        if (!user.getRole().equalsIgnoreCase("Admin")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText(null);
+            alert.setContentText("Anda tidak memiliki hak akses untuk menghapus barang.");
+            alert.showAndWait();
+            return;
+        }
+        
         if (selectedBarang == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Peringatan");
@@ -334,7 +351,7 @@ public class InventarisController {
                         namaBarang,
                         stokLama,
                         0,
-                        "Admin"
+                        getUserLog()
                 );
                 riwayatDAO.insertRiwayat(riwayat);
             }

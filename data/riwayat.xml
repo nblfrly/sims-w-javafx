@@ -1,5 +1,167 @@
 <riwayatList>
   <riwayat>
+    <id>54</id>
+    <waktu>13-07-2026 10:34:48</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Roti</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>6</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>53</id>
+    <waktu>13-07-2026 10:32:36</waktu>
+    <aktivitas>Hapus Barang</aktivitas>
+    <namaBarang>Indomie</namaBarang>
+    <stokLama>5</stokLama>
+    <stokBaru>0</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>52</id>
+    <waktu>13-07-2026 10:32:28</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Indomie</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>5</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>51</id>
+    <waktu>13-07-2026 10:31:02</waktu>
+    <aktivitas>Hapus Barang</aktivitas>
+    <namaBarang>Roti</namaBarang>
+    <stokLama>6</stokLama>
+    <stokBaru>0</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>50</id>
+    <waktu>13-07-2026 10:30:51</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Roti</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>6</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>49</id>
+    <waktu>13-07-2026 10:02:21</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Indomie Goreng</namaBarang>
+    <stokLama>6</stokLama>
+    <stokBaru>7</stokBaru>
+    <user>Adnan (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>48</id>
+    <waktu>13-07-2026 09:36:20</waktu>
+    <aktivitas>Hapus Barang</aktivitas>
+    <namaBarang>Item</namaBarang>
+    <stokLama>4</stokLama>
+    <stokBaru>0</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>47</id>
+    <waktu>13-07-2026 09:35:48</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Item</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>4</stokBaru>
+    <user>Rapi (Pegawai)</user>
+  </riwayat>
+  <riwayat>
+    <id>46</id>
+    <waktu>12-07-2026 20:15:04</waktu>
+    <aktivitas>Penggunaan barang - Indomie Goreng (1 porsi)</aktivitas>
+    <namaBarang>Telur</namaBarang>
+    <stokLama>5</stokLama>
+    <stokBaru>4</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>45</id>
+    <waktu>12-07-2026 20:15:04</waktu>
+    <aktivitas>Penggunaan barang - Indomie Goreng (1 porsi)</aktivitas>
+    <namaBarang>Sawi</namaBarang>
+    <stokLama>3</stokLama>
+    <stokBaru>2</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>44</id>
+    <waktu>12-07-2026 20:15:04</waktu>
+    <aktivitas>Penggunaan barang - Indomie Goreng (1 porsi)</aktivitas>
+    <namaBarang>Indomie Goreng</namaBarang>
+    <stokLama>7</stokLama>
+    <stokBaru>6</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>43</id>
+    <waktu>12-07-2026 20:12:23</waktu>
+    <aktivitas>Hapus Barang</aktivitas>
+    <namaBarang>Ganja</namaBarang>
+    <stokLama>7</stokLama>
+    <stokBaru>0</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>42</id>
+    <waktu>12-07-2026 20:12:02</waktu>
+    <aktivitas>Tambah Barang</aktivitas>
+    <namaBarang>Ganja</namaBarang>
+    <stokLama>0</stokLama>
+    <stokBaru>7</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>41</id>
+    <waktu>12-07-2026 18:51:03</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Tepung Terigu</namaBarang>
+    <stokLama>3</stokLama>
+    <stokBaru>0</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>40</id>
+    <waktu>12-07-2026 18:37:08</waktu>
+    <aktivitas>Penggunaan barang - Indomie Goreng (1 porsi)</aktivitas>
+    <namaBarang>Telur</namaBarang>
+    <stokLama>6</stokLama>
+    <stokBaru>5</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>39</id>
+    <waktu>12-07-2026 18:37:08</waktu>
+    <aktivitas>Penggunaan barang - Indomie Goreng (1 porsi)</aktivitas>
+    <namaBarang>Sawi</namaBarang>
+    <stokLama>4</stokLama>
+    <stokBaru>3</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>38</id>
+    <waktu>12-07-2026 18:37:08</waktu>
+    <aktivitas>Penggunaan barang - Indomie Goreng (1 porsi)</aktivitas>
+    <namaBarang>Indomie Goreng</namaBarang>
+    <stokLama>8</stokLama>
+    <stokBaru>7</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
+    <id>37</id>
+    <waktu>12-07-2026 17:12:28</waktu>
+    <aktivitas>Update Barang</aktivitas>
+    <namaBarang>Taro</namaBarang>
+    <stokLama>4</stokLama>
+    <stokBaru>5</stokBaru>
+    <user>Nabil (Admin)</user>
+  </riwayat>
+  <riwayat>
     <id>36</id>
     <waktu>12-07-2026 09:15:31</waktu>
     <aktivitas>Penggunaan barang - Indomie Goreng (1 porsi)</aktivitas>

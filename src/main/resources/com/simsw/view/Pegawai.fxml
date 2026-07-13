@@ -19,14 +19,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1150.0" style="-fx-background-color: #FFFDFD;" 
+<BorderPane prefHeight="700.0" prefWidth="1150.0" style="-fx-background-color: #F8FAFC;" 
             xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" 
             fx:controller="com.simsw.controller.PegawaiController">
    
    <!-- ================= HEADER WARMINDO RED ================= -->
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="75.0" spacing="15" 
-            style="-fx-background-color: #BE123C; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);" 
+            style="-fx-background-color: #C62828; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);" 
             BorderPane.alignment="CENTER">
          <padding>
             <Insets left="30.0" right="30.0" />
@@ -43,12 +43,14 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label text="Employee Management System" textFill="#FFE4E6">
+            <Label text="Employee Management" textFill="#FFE4E6">
                <font>
                   <Font size="15.0" />
                </font>
                <style>-fx-font-weight: 500;</style>
             </Label>
+            <HBox HBox.hgrow="ALWAYS" />
+            <fx:include source="UserInfo.fxml" />
          </children>
       </HBox>
    </top>
@@ -68,7 +70,7 @@
             
             <!-- ================= MODERN DATA FORM CONTAINER ================= -->
             <HBox spacing="25.0" 
-                  style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 22; -fx-border-color: #E2E8F0; -fx-border-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 4);">
+                  style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-padding: 22; -fx-border-color: #CBD5E1; -fx-border-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(15,23,42,0.04), 8, 0, 0, 4);">
                <children>
                   
                   <!-- Form Fields Side -->

@@ -1,9 +1,13 @@
 package com.simsw.controller;
 
-import java.io.IOException;
+import com.simsw.dao.xstream.MenuXStreamDAO;
+import com.simsw.model.Menu;
+import com.simsw.util.AlertHelper;
+import com.simsw.util.SceneNavigator;
+import com.simsw.util.Session;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,310 +27,281 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
-import com.simsw.dao.xstream.MenuXStreamDAO;
-import com.simsw.model.Menu;
+import javafx.util.StringConverter;
 
 public class MenuController {
 
-    // FORM
+    private static final List<String> DEFAULT_CATEGORIES = List.of("Makanan", "Minuman", "Snack", "Paket");
 
-    @FXML
-    private TextField txtNamaMenu;
+    @FXML private ComboBox<Menu> cmbNamaMenu;
+    @FXML private TextField txtHarga;
+    @FXML private TextField txtSearch;
+    @FXML private ComboBox<String> cmbKategori;
+    @FXML private ComboBox<String> cmbStatus;
+    @FXML private Button btnTambah;
+    @FXML private Button btnKelolaResep;
+    @FXML private TableView<Menu> tableMenu;
+    @FXML private TableColumn<Menu, Integer> colId;
+    @FXML private TableColumn<Menu, String> colNama;
+    @FXML private TableColumn<Menu, String> colKategori;
+    @FXML private TableColumn<Menu, Integer> colHarga;
+    @FXML private TableColumn<Menu, String> colStatus;
 
-    @FXML
-    private TextField txtHarga;
+    private final MenuXStreamDAO menuDAO = new MenuXStreamDAO();
+    private final ObservableList<Menu> masterData = FXCollections.observableArrayList();
+    private final ObservableList<String> categoryOptions = FXCollections.observableArrayList();
+    private Menu selectedMenu;
+    private boolean fillingForm;
 
-    @FXML
-    private TextField txtSearch;
-
-    @FXML
-    private ComboBox<String> cmbKategori;
-
-    @FXML
-    private ComboBox<String> cmbStatus;
-
-    // BUTTON
-    @FXML
-    private Button btnDashboard;
-
-    @FXML
-    private Button btnTambah;
-
-    @FXML
-    private Button btnKelolaResep;
-
-    @FXML
-    private Button btnDelete;
-
-    @FXML
-    private Button btnReset;
-
-    // TABLE
-
-    @FXML
-    private TableView<Menu> tableMenu;
-
-    @FXML
-    private TableColumn<Menu, Integer> colId;
-
-    @FXML
-    private TableColumn<Menu, String> colNama;
-
-    @FXML
-    private TableColumn<Menu, String> colKategori;
-
-    @FXML
-    private TableColumn<Menu, Integer> colHarga;
-
-    @FXML
-    private TableColumn<Menu, String> colStatus;
-
-    // VARIABLE
-
-    private Menu selectedMenu = null;
-
-    private ObservableList<Menu> masterData = FXCollections.observableArrayList();
-
-    // INITIALIZE
     @FXML
     public void initialize() {
-        // isi kategori
-        cmbKategori.getItems().addAll("Makanan", "Minuman", "Snack", "Paket");
-
-        // isi status
-        cmbStatus.getItems().addAll("Aktif", "Nonaktif");
-
-        loadTable();
-        clearForm();
+        setupTable();
         setupSearch();
+        setupNameSuggestions();
+        setupCategorySuggestions();
+        cmbStatus.getItems().setAll("Aktif", "Nonaktif");
+        loadTable();
 
         tableMenu.getSelectionModel().selectedItemProperty().addListener((obs, oldItem, newItem) -> {
-            if (newItem == null) {
-                selectedMenu = null;
-                return;
+            if (newItem != null) {
+                fillForm(newItem);
             }
-
-            selectedMenu = newItem;
-            txtNamaMenu.setText(newItem.getNamaMenu());
-            txtHarga.setText(String.valueOf(newItem.getHarga()));
-            cmbKategori.setValue(newItem.getKategori());
-            cmbStatus.setValue(newItem.getStatus());
-            btnTambah.setText("Update Menu");
         });
+        resetForm(null);
     }
 
-    // LOAD TABLE
-    private void loadTable() {
+    private void setupTable() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colNama.setCellValueFactory(new PropertyValueFactory<>("namaMenu"));
         colKategori.setCellValueFactory(new PropertyValueFactory<>("kategori"));
         colHarga.setCellValueFactory(new PropertyValueFactory<>("harga"));
         colStatus.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getStatus()));
-
-        MenuXStreamDAO dao = new MenuXStreamDAO();
-        List<Menu> list = dao.getAllMenu();
-
-        masterData.setAll(list);
-        tableMenu.setItems(masterData);
     }
 
-    // SEARCH
     private void setupSearch() {
-        FilteredList<Menu> filteredData = new FilteredList<>(masterData, b -> true);
-
-        txtSearch.textProperty().addListener((obs, oldValue, newValue) -> {
-            filteredData.setPredicate(menu -> {
-                if (newValue == null || newValue.isBlank()) {
-                    return true;
-                }
-
-                String keyword = newValue.toLowerCase();
-                return menu.getNamaMenu().toLowerCase().contains(keyword)
-                        || menu.getKategori().toLowerCase().contains(keyword);
-            });
-        });
-
+        FilteredList<Menu> filteredData = new FilteredList<>(masterData, menu -> true);
+        txtSearch.textProperty().addListener((obs, oldValue, newValue) -> filteredData.setPredicate(menu -> {
+            if (newValue == null || newValue.isBlank()) {
+                return true;
+            }
+            String keyword = newValue.toLowerCase(Locale.ROOT);
+            return menu.getNamaMenu().toLowerCase(Locale.ROOT).contains(keyword)
+                    || menu.getKategori().toLowerCase(Locale.ROOT).contains(keyword);
+        }));
         SortedList<Menu> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(tableMenu.comparatorProperty());
         tableMenu.setItems(sortedData);
     }
 
-    // CLEAR FORM
-    private void clearForm() {
-        txtNamaMenu.clear();
-        txtHarga.clear();
+    private void setupNameSuggestions() {
+        cmbNamaMenu.setEditable(true);
+        cmbNamaMenu.setConverter(new StringConverter<>() {
+            @Override
+            public String toString(Menu menu) {
+                return menu == null ? "" : menu.getNamaMenu();
+            }
 
-        cmbKategori.getSelectionModel().clearSelection();
-        cmbStatus.getSelectionModel().clearSelection();
+            @Override
+            public Menu fromString(String nama) {
+                if (nama == null || nama.isBlank()) {
+                    return null;
+                }
+                return masterData.stream()
+                        .filter(menu -> menu.getNamaMenu().equalsIgnoreCase(nama.trim()))
+                        .findFirst()
+                        .orElse(null);
+            }
+        });
+    
+        cmbNamaMenu.valueProperty().addListener((obs, oldValue, newValue) -> {
+            if (fillingForm) return;
+            if (!(newValue instanceof Menu)) return;
 
-        selectedMenu = null;
+            Menu menu = (Menu) newValue;
+            fillForm(menu);
+        });
 
-        tableMenu.getSelectionModel().clearSelection();
-        tableMenu.refresh();
+        cmbNamaMenu.setOnAction(event -> {
+            Menu pilihan = cmbNamaMenu.getSelectionModel().getSelectedItem();
+            if (!fillingForm && pilihan != null) {
+                fillForm(pilihan);
+            }
+        });
 
-        btnTambah.setText("Tambah / Update Menu");
+        cmbNamaMenu.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
+            if (!fillingForm && selectedMenu != null 
+                    && !selectedMenu.getNamaMenu().equalsIgnoreCase(newValue.trim())) {
+                selectedMenu = null;
+                tableMenu.getSelectionModel().clearSelection();
+                btnTambah.setText("Tambah Menu");
+            }
+            filterMenuSuggestions(newValue);
+        });
     }
 
-    // SAVE MENU (INSERT / UPDATE)
+    private void setupCategorySuggestions() {
+        cmbKategori.setEditable(true);
+        cmbKategori.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
+            if (!fillingForm) {
+                filterCategorySuggestions(newValue);
+            }
+        });
+    }
+
+    private void loadTable() {
+        masterData.setAll(menuDAO.getAllMenu());
+        categoryOptions.setAll(DEFAULT_CATEGORIES);
+        masterData.stream().map(Menu::getKategori).filter(kategori -> !categoryOptions.contains(kategori))
+                .forEach(categoryOptions::add);
+        cmbNamaMenu.getItems().setAll(masterData);
+        cmbKategori.getItems().setAll(categoryOptions);
+    }
+
+    private void filterMenuSuggestions(String query) {
+        String keyword = query == null ? "" : query.trim().toLowerCase(Locale.ROOT);
+        List<Menu> matches = masterData.stream()
+                .filter(menu -> menu.getNamaMenu().toLowerCase(Locale.ROOT).contains(keyword))
+                .toList();
+        cmbNamaMenu.getItems().setAll(matches);
+        if (!keyword.isBlank() && !matches.isEmpty() && cmbNamaMenu.isFocused()) {
+            cmbNamaMenu.show();
+        }
+    }
+
+    private void filterCategorySuggestions(String query) {
+        String keyword = query == null ? "" : query.trim().toLowerCase(Locale.ROOT);
+        List<String> matches = categoryOptions.stream()
+                .filter(kategori -> kategori.toLowerCase(Locale.ROOT).contains(keyword))
+                .toList();
+        cmbKategori.getItems().setAll(matches);
+        if (!keyword.isBlank() && !matches.isEmpty() && cmbKategori.isFocused()) {
+            cmbKategori.show();
+        }
+    }
+
+    private void fillForm(Menu menu) {
+        fillingForm = true;
+        selectedMenu = menu;
+        cmbNamaMenu.setValue(menu);
+        cmbNamaMenu.getEditor().setText(menu.getNamaMenu());
+        txtHarga.setText(String.valueOf(menu.getHarga()));
+        cmbKategori.setValue(menu.getKategori());
+        cmbStatus.setValue(menu.getStatus());
+        btnTambah.setText("Update Menu");
+        fillingForm = false;
+    }
+
+    @FXML
+    private void resetForm(ActionEvent event) {
+        fillingForm = true;
+
+        cmbNamaMenu.setValue(null);
+        cmbNamaMenu.getSelectionModel().clearSelection();
+        cmbNamaMenu.getEditor().clear();
+        cmbNamaMenu.getItems().setAll(masterData);
+
+        txtHarga.clear();
+        cmbKategori.getSelectionModel().clearSelection();
+        cmbKategori.getEditor().clear();
+        cmbKategori.getItems().setAll(categoryOptions);
+        cmbStatus.getSelectionModel().clearSelection();
+        
+        selectedMenu = null;
+        tableMenu.getSelectionModel().clearSelection();
+        btnTambah.setText("Tambah Menu");
+        fillingForm = false;
+    }
+
     @FXML
     private void saveMenu(ActionEvent event) {
-        try {
-            String namaMenu = txtNamaMenu.getText().trim();
-            String kategori = cmbKategori.getValue();
-            String status = cmbStatus.getValue();
-
-            if (namaMenu.isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setHeaderText(null);
-                alert.setContentText("Nama menu wajib diisi.");
-                alert.showAndWait();
-                return;
-            }
-
-            if (kategori == null) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setHeaderText(null);
-                alert.setContentText("Kategori belum dipilih.");
-                alert.showAndWait();
-                return;
-            }
-
-            if (status == null) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setHeaderText(null);
-                alert.setContentText("Status belum dipilih.");
-                alert.showAndWait();
-                return;
-            }
-
-            int harga;
-            try {
-                harga = Integer.parseInt(txtHarga.getText());
-            } catch (NumberFormatException ex) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setContentText("Harga harus berupa angka.");
-                alert.showAndWait();
-                return;
-            }
-
-            MenuXStreamDAO dao = new MenuXStreamDAO();
-            boolean sukses;
-
-            // INSERT / UPDATE LOGIC
-            if (selectedMenu == null) {
-                Menu menu = new Menu(0, namaMenu, kategori, harga, status);
-                sukses = dao.insertMenu(menu);
-            } else {
-                selectedMenu.setNamaMenu(namaMenu);
-                selectedMenu.setKategori(kategori);
-                selectedMenu.setHarga(harga);
-                selectedMenu.setStatus(status);
-                sukses = dao.updateMenu(selectedMenu);
-            }
-
-
-            // ALERT NOTIFICATION
-            if (sukses) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText(null);
-
-                if (selectedMenu == null) {
-                    alert.setContentText("Menu berhasil ditambahkan.");
-                } else {
-                    alert.setContentText("Menu berhasil diperbarui.");
-                }
-
-                alert.showAndWait();
-                loadTable();
-                clearForm();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setContentText("Proses gagal.");
-                alert.showAndWait();
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Terjadi kesalahan.");
-            alert.showAndWait();
+        if (!isAdmin()) {
+            AlertHelper.showWarning("Anda tidak memiliki hak akses untuk menambah atau memperbarui menu warmindo.");
+            return;
         }
+        try {
+            String namaMenu = cmbNamaMenu.getEditor().getText().trim();
+            String kategori = cmbKategori.getEditor().getText().trim();
+            String status = cmbStatus.getValue();
+            int harga = Integer.parseInt(txtHarga.getText().trim());
+
+            if (namaMenu.isEmpty() || kategori.isEmpty() || status == null) {
+                AlertHelper.showWarning("Nama menu, kategori, dan status wajib diisi.");
+                return;
+            }
+            if (harga < 0) {
+                AlertHelper.showWarning("Harga tidak boleh negatif.");
+                return;
+            }
+
+            Optional<Menu> duplicate = masterData.stream()
+                    .filter(menu -> menu.getNamaMenu().equalsIgnoreCase(namaMenu))
+                    .filter(menu -> selectedMenu == null || menu.getId() != selectedMenu.getId())
+                    .findFirst();
+            if (duplicate.isPresent()) {
+                AlertHelper.showWarning("Menu '" + duplicate.get().getNamaMenu()
+                        + "' sudah ada. Pilih dari saran untuk memperbarui datanya.");
+                return;
+            }
+
+            boolean isNew = selectedMenu == null;
+            Menu menu = isNew ? new Menu(0, namaMenu, kategori, harga, status) : selectedMenu;
+            menu.setNamaMenu(namaMenu);
+            menu.setKategori(kategori);
+            menu.setHarga(harga);
+            menu.setStatus(status);
+
+            boolean sukses = isNew ? menuDAO.insertMenu(menu) : menuDAO.updateMenu(menu);
+            if (!sukses) {
+                AlertHelper.showError("Data menu gagal disimpan.");
+                return;
+            }
+            AlertHelper.showInformation(isNew ? "Menu berhasil ditambahkan." : "Menu berhasil diperbarui.");
+            loadTable();
+            resetForm(null);
+        } catch (NumberFormatException exception) {
+            AlertHelper.showWarning("Harga harus berupa angka.");
+        }
+    }
+
+    @FXML
+    private void deleteMenu(ActionEvent event) {
+        if (!isAdmin()) {
+            AlertHelper.showWarning("Anda tidak memiliki hak akses untuk menghapus menu warmindo.");
+            return;
+        }
+        if (selectedMenu == null) {
+            AlertHelper.showWarning("Pilih menu yang ingin dihapus.");
+            return;
+        }
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+        confirm.setTitle("Konfirmasi");
+        confirm.setHeaderText("Hapus Menu");
+        confirm.setContentText("Yakin ingin menghapus '" + selectedMenu.getNamaMenu() + "'?");
+        if (confirm.showAndWait().orElse(ButtonType.CANCEL) != ButtonType.OK) {
+            return;
+        }
+        if (!menuDAO.deleteMenu(selectedMenu.getId())) {
+            AlertHelper.showError("Menu gagal dihapus.");
+            return;
+        }
+        AlertHelper.showInformation("Menu berhasil dihapus.");
+        loadTable();
+        resetForm(null);
     }
 
     @FXML
     private void openKelolaResep(ActionEvent event) {
-        System.out.println("Tombol kelola resep diklik!");
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simsw/view/KelolaResep.fxml"));
-            Parent root = loader.load();
-            
+            SidebarController.setActivePage("KelolaResep");
+            Parent root = FXMLLoader.load(getClass().getResource("/com/simsw/view/KelolaResep.fxml"));
             Stage stage = (Stage) btnKelolaResep.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Kelola Resep");
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+            SceneNavigator.show(stage, root, "Kelola Resep");
+        } catch (Exception exception) {
+            AlertHelper.showError("Halaman kelola resep tidak dapat dibuka.");
         }
     }
 
-    // DELETE MENU
-    @FXML
-    private void deleteMenu(ActionEvent event) {
-        if (selectedMenu == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setHeaderText(null);
-            alert.setContentText("Pilih menu yang ingin dihapus.");
-            alert.showAndWait();
-            return;
-        }
-
-        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
-        confirm.setTitle("Konfirmasi");
-        confirm.setHeaderText("Hapus Menu");
-        confirm.setContentText("Yakin ingin menghapus \"" + selectedMenu.getNamaMenu() + "\" ?");
-
-        Optional<ButtonType> result = confirm.showAndWait();
-
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            MenuXStreamDAO dao = new MenuXStreamDAO();
-            boolean sukses = dao.deleteMenu(selectedMenu.getId());
-
-            if (sukses) {
-                Alert info = new Alert(Alert.AlertType.INFORMATION);
-                info.setHeaderText(null);
-                info.setContentText("Menu berhasil dihapus.");
-                info.showAndWait();
-
-                loadTable();
-                clearForm();
-            } else {
-                Alert error = new Alert(Alert.AlertType.ERROR);
-                error.setHeaderText(null);
-                error.setContentText("Gagal menghapus menu.");
-                error.showAndWait();
-            }
-        }
-    }
-
-    // RESET FORM
-    @FXML
-    private void resetForm(ActionEvent event) {
-        clearForm();
-    }
-
-    // BACK DASHBOARD
-    @FXML
-    private void backDashboard(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simsw/view/Dashboard.fxml"));
-        Parent root = loader.load();
-
-        Stage stage = (Stage) btnDashboard.getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Dashboard");
-        stage.show();
+    private boolean isAdmin() {
+        return Session.isLogin() && "Admin".equalsIgnoreCase(Session.getCurrentUser().getRole());
     }
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.simsw.dao.xstream.PegawaiXStreamDAO;
 import com.simsw.model.Pegawai;
+import com.simsw.util.SceneNavigator;
 import com.simsw.util.Session;
 
 import javafx.event.ActionEvent;
@@ -42,9 +43,7 @@ public class LoginController {
             Parent root = loader.load();
 
             Stage stage = (Stage) txtUsername.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Dashboard");
-            stage.show();
+            SceneNavigator.show(stage, root, "Dashboard");
 
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

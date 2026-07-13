@@ -9,6 +9,8 @@ import com.simsw.model.Resep;
 
 import java.net.URL;
 import com.simsw.util.AlertHelper;
+import com.simsw.util.SceneNavigator;
+import com.simsw.util.Session;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -103,7 +105,7 @@ public class KelolaResepController implements Initializable {
         colId.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getId()).asObject());
         colMenu.setCellValueFactory(cell -> new SimpleStringProperty(getNamaMenu(cell.getValue().getIdMenu())));
         colBarang.setCellValueFactory(cell -> new SimpleStringProperty(getNamaBarang(cell.getValue().getIdBarang())));
-        colJumlah.setCellValueFactory(cell -> new SimpleIntegerProperty((int) cell.getValue().getJumlahPakai()).asObject());
+        colJumlah.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getJumlahPakai()).asObject());
         
         refreshTable();
     }
@@ -122,6 +124,7 @@ public class KelolaResepController implements Initializable {
         }
 
         txtJumlah.setText(String.valueOf(selectedResep.getJumlahPakai()));
+        btnTambah.setText("Update Resep");
 
         // Pilih menu otomatis di ComboBox
         for (Menu menu : cmbMenu.getItems()) {
@@ -143,6 +146,10 @@ public class KelolaResepController implements Initializable {
     // SAVE / INSERT / UPDATE
     @FXML
     private void saveResep() {
+        if (!isAdmin()) {
+            showWarning("Anda tidak memiliki hak akses untuk menambah atau memperbarui resep.");
+            return;
+        }
         try {
             if (!validasiInput()) {
                 return;
@@ -188,6 +195,10 @@ public class KelolaResepController implements Initializable {
     // DELETE
     @FXML
     private void deleteResep() {
+        if (!isAdmin()) {
+            showWarning("Anda tidak memiliki hak akses untuk menghapus resep.");
+            return;
+        }
         if (selectedResep == null) {
             showWarning("Pilih resep terlebih dahulu.");
             return;
@@ -208,6 +219,7 @@ public class KelolaResepController implements Initializable {
         cmbBarang.getSelectionModel().clearSelection();
         tableResep.getSelectionModel().clearSelection();
         selectedResep = null;
+        btnTambah.setText("Tambah Resep");
     }
 
     // VALIDASI INPUT
@@ -263,9 +275,7 @@ public class KelolaResepController implements Initializable {
             Parent root = loader.load();
 
             Stage stage = (Stage) btnMenu.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Menu Warmindo");
-            stage.show();
+            SceneNavigator.show(stage, root, "Menu Warmindo");
         }
         catch(Exception e){
             e.printStackTrace();
@@ -312,5 +322,9 @@ public class KelolaResepController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private boolean isAdmin() {
+        return Session.isLogin() && "Admin".equalsIgnoreCase(Session.getCurrentUser().getRole());
     }
 }

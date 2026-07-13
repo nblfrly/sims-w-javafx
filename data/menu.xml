@@ -69,4 +69,11 @@
     <harga>9000</harga>
     <status>Nonaktif</status>
   </menu>
+  <menu>
+    <id>11</id>
+    <namaMenu>Nasi</namaMenu>
+    <kategori>Makanan</kategori>
+    <harga>4000</harga>
+    <status>Aktif</status>
+  </menu>
 </menuList>

@@ -6,14 +6,21 @@ import com.simsw.dao.xstream.PegawaiXStreamDAO;
 import com.simsw.dao.xstream.RiwayatXStreamDAO;
 import com.simsw.model.Barang;
 import com.simsw.model.Riwayat;
+import com.simsw.util.SceneNavigator;
 import com.simsw.util.Session;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class DashboardController implements Initializable {
 
@@ -76,5 +83,64 @@ public class DashboardController implements Initializable {
                 .filter(riwayat -> riwayat.getWaktu().startsWith(hariIni))
                 .count();
         lblAktivitas.setText(String.valueOf(aktivitasHariIni));
+    }
+
+    @FXML
+    private void openInventaris(MouseEvent event) {
+        openPage(event, "Inventaris", "Inventaris");
+    }
+
+    @FXML
+    private void openMenu(MouseEvent event) {
+        openPage(event, "Menu", "Menu Warmindo");
+    }
+
+    @FXML
+    private void openPegawai(MouseEvent event) {
+        if (Session.isLogin() && "Pegawai".equalsIgnoreCase(Session.getCurrentUser().getRole())) {
+            return;
+        }
+        openPage(event, "Pegawai", "Manajemen Pegawai");
+    }
+
+    @FXML
+    private void openStokMenipis(MouseEvent event) {
+        try {
+            SidebarController.setActivePage("Inventaris");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simsw/view/Inventaris.fxml"));
+            Parent root = loader.load();
+            loader.<InventarisController>getController().tampilkanStokMenipis();
+            showPage(event, root, "Inventaris - Stok Menipis");
+        } catch (Exception exception) {
+            // The current page remains visible when a destination cannot be loaded.
+        }
+    }
+
+    @FXML
+    private void openAktivitasHariIni(MouseEvent event) {
+        try {
+            SidebarController.setActivePage("Riwayat");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simsw/view/Riwayat.fxml"));
+            Parent root = loader.load();
+            loader.<RiwayatController>getController().tampilkanAktivitasHariIni();
+            showPage(event, root, "Riwayat Hari Ini");
+        } catch (Exception exception) {
+            // The current page remains visible when a destination cannot be loaded.
+        }
+    }
+
+    private void openPage(MouseEvent event, String fxmlName, String title) {
+        try {
+            SidebarController.setActivePage(fxmlName);
+            Parent root = FXMLLoader.load(getClass().getResource("/com/simsw/view/" + fxmlName + ".fxml"));
+            showPage(event, root, title);
+        } catch (Exception exception) {
+            // The current page remains visible when a destination cannot be loaded.
+        }
+    }
+
+    private void showPage(MouseEvent event, Parent root, String title) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneNavigator.show(stage, root, title);
     }
 }

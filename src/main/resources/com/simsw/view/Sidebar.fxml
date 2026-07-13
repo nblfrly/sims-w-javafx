@@ -7,67 +7,62 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<!-- Perubahan Warna Latar Ke #FFF1F2 (Rose Cream) & Garis Pembatas Ke #FFE4E6 -->
-<VBox minWidth="240" prefWidth="240" spacing="6" 
-      style="-fx-background-color: #FFF1F2; -fx-border-color: transparent #FFE4E6 transparent transparent; -fx-border-width: 0 1 0 0;" 
-      xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1"
+<VBox minWidth="240" prefWidth="240" spacing="8" 
+      style="-fx-background-color: #FAFAFA; -fx-border-color: transparent #E0E0E0 transparent transparent; -fx-border-width: 0 1 0 0;" 
+      xmlns="http://javafx.com/javafx/26" 
+      xmlns:fx="http://javafx.com/fxml/1" 
       fx:controller="com.simsw.controller.SidebarController">
    
    <padding>
-      <Insets bottom="25" left="16" right="16" top="25" />
+      <Insets bottom="18" left="14" right="14" top="22" />
    </padding>
    
    <children>
-      <!-- HEADER MENU -->
-      <!-- Teks judul diubah menjadi merah gelap maroon agar kontras di atas warna putih-pink -->
-      <Label text="MAIN MENU" textFill="#9F1239">
+      <!-- Label Navigasi -->
+      <Label style="-fx-font-weight: bold;" text="NAVIGASI" textFill="#8D2020">
          <font>
-            <Font size="11.0" />
+            <Font size="11" />
          </font>
-         <style>-fx-font-weight: bold; -fx-letter-spacing: 1px;</style>
       </Label>
       
-      <Region prefHeight="10" />
-   
-      <!-- ================= NAVIGATION BUTTONS ================= -->
+      <Region prefHeight="8" />
       
-      <!-- Dashboard (Kondisi Aktif/Selected: Merah Bold khas Warmindo) -->
-      <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#openDashboard" prefHeight="44" 
-              style="-fx-alignment: CENTER_LEFT; -fx-padding: 0 16 0 16; -fx-background-color: #BE123C; -fx-text-fill: white; -fx-font-size: 14; -fx-font-weight: bold; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(190,18,60,0.2), 8, 0, 0, 3);" 
+      <!-- Menu 1: Dashboard -->
+      <Button fx:id="btnDashboard" maxWidth="Infinity" mnemonicParsing="false" onAction="#openDashboard" prefHeight="46" 
+              style="-fx-alignment: CENTER_LEFT; -fx-padding: 0 14 0 14; -fx-background-color: transparent; -fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold; -fx-background-radius: 9; -fx-cursor: hand;" 
               text="🏠   Dashboard" />
-      
-      <!-- Inventaris (Kondisi Standby: Teks Abu-Gelap Kemerahan agar seimbang) -->
-      <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#openInventaris" prefHeight="44" 
-              style="-fx-alignment: CENTER_LEFT; -fx-padding: 0 16 0 16; -fx-background-color: transparent; -fx-text-fill: #4C0519; -fx-font-size: 14; -fx-background-radius: 10; -fx-cursor: hand;" 
+              
+      <!-- Menu 2: Inventaris -->
+      <Button fx:id="btnInventaris" maxWidth="Infinity" mnemonicParsing="false" onAction="#openInventaris" prefHeight="46" 
+              style="-fx-alignment: CENTER_LEFT; -fx-padding: 0 14 0 14; -fx-background-color: transparent; -fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold; -fx-background-radius: 9; -fx-cursor: hand;" 
               text="📦   Inventaris" />
-      
-      <!-- Menu Warmindo -->
-      <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#openMenu" prefHeight="44" 
-              style="-fx-alignment: CENTER_LEFT; -fx-padding: 0 16 0 16; -fx-background-color: transparent; -fx-text-fill: #4C0519; -fx-font-size: 14; -fx-background-radius: 10; -fx-cursor: hand;" 
+              
+      <!-- Menu 3: Menu Warmindo -->
+      <Button fx:id="btnMenu" maxWidth="Infinity" mnemonicParsing="false" onAction="#openMenu" prefHeight="46" 
+              style="-fx-alignment: CENTER_LEFT; -fx-padding: 0 14 0 14; -fx-background-color: transparent; -fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold; -fx-background-radius: 9; -fx-cursor: hand;" 
               text="🍜   Menu Warmindo" />
-      
-      <!-- Penggunaan Barang -->
-      <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#openPenggunaan" prefHeight="44" 
-              style="-fx-alignment: CENTER_LEFT; -fx-padding: 0 16 0 16; -fx-background-color: transparent; -fx-text-fill: #4C0519; -fx-font-size: 14; -fx-background-radius: 10; -fx-cursor: hand;" 
+              
+      <!-- Menu 4: Penggunaan Barang -->
+      <Button fx:id="btnPenggunaan" maxWidth="Infinity" mnemonicParsing="false" onAction="#openPenggunaan" prefHeight="46" 
+              style="-fx-alignment: CENTER_LEFT; -fx-padding: 0 14 0 14; -fx-background-color: transparent; -fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold; -fx-background-radius: 9; -fx-cursor: hand;" 
               text="📋   Penggunaan Barang" />
-      
-      <!-- Riwayat -->
-      <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#openRiwayat" prefHeight="44" 
-              style="-fx-alignment: CENTER_LEFT; -fx-padding: 0 16 0 16; -fx-background-color: transparent; -fx-text-fill: #4C0519; -fx-font-size: 14; -fx-background-radius: 10; -fx-cursor: hand;" 
+              
+      <!-- Menu 5: Riwayat -->
+      <Button fx:id="btnRiwayat" maxWidth="Infinity" mnemonicParsing="false" onAction="#openRiwayat" prefHeight="46" 
+              style="-fx-alignment: CENTER_LEFT; -fx-padding: 0 14 0 14; -fx-background-color: transparent; -fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold; -fx-background-radius: 9; -fx-cursor: hand;" 
               text="🕘   Riwayat" />
-      
-      <!-- Pegawai -->
-      <Button fx:id="btnPegawai" maxWidth="Infinity" mnemonicParsing="false" onAction="#openPegawai" prefHeight="44" 
-              style="-fx-alignment: CENTER_LEFT; -fx-padding: 0 16 0 16; -fx-background-color: transparent; -fx-text-fill: #4C0519; -fx-font-size: 14; -fx-background-radius: 10; -fx-cursor: hand;" 
+              
+      <!-- Menu 6: Pegawai -->
+      <Button fx:id="btnPegawai" maxWidth="Infinity" mnemonicParsing="false" onAction="#openPegawai" prefHeight="46" 
+              style="-fx-alignment: CENTER_LEFT; -fx-padding: 0 14 0 14; -fx-background-color: transparent; -fx-text-fill: #333333; -fx-font-size: 14; -fx-font-weight: bold; -fx-background-radius: 9; -fx-cursor: hand;" 
               text="👥   Pegawai" />
-   
+              
+      <!-- Spacer to Push Logout Down -->
       <Region VBox.vgrow="ALWAYS" />
       
-      <!-- ================= LOGOUT BUTTON ================= -->
-      <!-- Dibuat kontras menggunakan warna solid Maroon gelap dengan teks putih agar estetik di bagian bawah -->
-      <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#logout" prefHeight="44" 
-              style="-fx-alignment: CENTER_LEFT; -fx-padding: 0 16 0 16; -fx-background-color: #BE123C; -fx-text-fill: white; -fx-font-size: 14; -fx-font-weight: bold; -fx-background-radius: 10; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 2);" 
-              text="↩   Keluar" />
-      
+      <!-- Tombol Keluar -->
+      <Button fx:id="btnLogout" maxWidth="Infinity" mnemonicParsing="false" onAction="#logout" prefHeight="46" 
+              style="-fx-alignment: CENTER_LEFT; -fx-padding: 0 14 0 14; -fx-background-color: #FEE2E2; -fx-text-fill: #991B1B; -fx-font-size: 14; -fx-font-weight: bold; -fx-background-radius: 9; -fx-cursor: hand;" 
+              text="↪   Keluar" />
    </children>
 </VBox>

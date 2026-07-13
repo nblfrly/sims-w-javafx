@@ -4,7 +4,7 @@ public class Resep {
     private int id;
     private int idMenu;
     private int idBarang;
-    private double jumlahPakai;
+    private int jumlahPakai;
     private String satuan;
 
     public Resep() {
@@ -13,7 +13,7 @@ public class Resep {
     public Resep(int id,
                  int idMenu,
                  int idBarang,
-                 double jumlahPakai,
+                 int jumlahPakai,
                  String satuan) {
 
         this.id = id;
@@ -37,7 +37,7 @@ public class Resep {
         return idBarang;
     }
 
-    public double getJumlahPakai() {
+    public int getJumlahPakai() {
         return jumlahPakai;
     }
 
@@ -58,7 +58,7 @@ public class Resep {
         this.idBarang = idBarang;
     }
 
-    public void setJumlahPakai(double jumlahPakai) {
+    public void setJumlahPakai(int jumlahPakai) {
         this.jumlahPakai = jumlahPakai;
     }
 

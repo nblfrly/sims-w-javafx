@@ -13,14 +13,14 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
-            prefHeight="700.0" prefWidth="1150.0" style="-fx-background-color: #FFFDFD;" 
+            prefHeight="700.0" prefWidth="1150.0" style="-fx-background-color: #F8FAFC;" 
             xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" 
             fx:controller="com.simsw.controller.InventarisController">
    
    <!-- ================= HEADER WARMINDO RED ================= -->
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="75.0" spacing="15" 
-            style="-fx-background-color: #BE123C; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);" 
+            style="-fx-background-color: #C62828; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);" 
             BorderPane.alignment="CENTER">
          <padding>
             <Insets left="30.0" right="30.0" />
@@ -37,12 +37,14 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label text="Warmindo Stock Manager" textFill="#FFE4E6">
+            <Label text="Inventory Management" textFill="#FFE4E6">
                <font>
                   <Font size="15.0" />
                </font>
                <style>-fx-font-weight: 500;</style>
             </Label>
+            <HBox HBox.hgrow="ALWAYS" />
+            <fx:include source="UserInfo.fxml" />
          </children>
       </HBox>
    </top>
@@ -56,7 +58,7 @@
             
             <!-- Side Form Panel -->
             <VBox prefWidth="300.0" spacing="18.0" 
-                  style="-fx-background-color: white; -fx-border-color: transparent #E2E8F0 transparent transparent; -fx-border-width: 0 1 0 0;">
+                  style="-fx-background-color: #ffffff; -fx-border-color: transparent #CBD5E1 transparent transparent; -fx-border-width: 0 1 0 0;">
                <padding>
                   <Insets bottom="25.0" left="22.0" right="22.0" top="25.0" />
                </padding>
@@ -74,8 +76,8 @@
                         <Label text="Nama Item" textFill="#64748B">
                            <style>-fx-font-weight: 600; -fx-font-size: 12;</style>
                         </Label>
-                        <TextField fx:id="nameField" prefHeight="38.0" promptText="e.g., Indomie Goreng" 
-                                   style="-fx-background-color: white; -fx-border-color: #CBD5E1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 0 12 0 12; -fx-text-fill: #1E293B;" />
+                        <ComboBox fx:id="cmbNama" editable="true" maxWidth="Infinity" prefHeight="38.0" promptText="Contoh: Indomie Goreng" 
+                                  style="-fx-background-color: white; -fx-border-color: #CBD5E1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 0 4 0 4;" />
                      </children>
                   </VBox>
                   
@@ -120,15 +122,15 @@
                                 style="-fx-background-color: #10B981; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-size: 13.0; -fx-font-weight: bold; -fx-cursor: hand;" 
                                 text="➕   Add / Update Item" />
                         
-                        <!-- Button: Use Item -->
-                        <Button fx:id="useStockButton" maxWidth="Infinity" mnemonicParsing="false" prefHeight="40.0" 
-                                style="-fx-background-color: #F59E0B; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-size: 13.0; -fx-font-weight: bold; -fx-cursor: hand;" 
-                                text="🥢   Use Item (-1 Stock)" />
-                        
                         <!-- Button: Delete -->
                         <Button fx:id="deleteButton" maxWidth="Infinity" mnemonicParsing="false" onAction="#deleteItem" prefHeight="40.0" 
                                 style="-fx-background-color: #EF4444; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-size: 13.0; -fx-font-weight: bold; -fx-cursor: hand;" 
                                 text="🗑   Delete Item" />
+
+                        <!-- Button: Reset Form -->
+                        <Button fx:id="btnReset" maxWidth="Infinity" mnemonicParsing="false" onAction="#resetForm" prefHeight="35.0" 
+                                style="-fx-background-color: transparent; -fx-text-fill: #64748B; -fx-border-color: #CBD5E1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-size: 12.0; -fx-font-weight: 600; -fx-cursor: hand;" 
+                                text="🔄   Reset Form" />
                      </children>
                      <padding>
                         <Insets top="8.0" />
@@ -147,7 +149,7 @@
             
             <!-- Search Bar Layout -->
             <HBox alignment="CENTER_LEFT" spacing="12.0" 
-                  style="-fx-background-color: white; -fx-padding: 14 20 14 20; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-border-color: #E2E8F0; -fx-border-radius: 12;">
+                  style="-fx-background-color: #ffffff; -fx-padding: 14 20 14 20; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 8, 0, 0, 2); -fx-border-color: #E2E8F0; -fx-border-radius: 12;">
                <children>
                   <Label text="🔍" style="-fx-font-size: 16;" />
                   <Label text="Search Stock:" textFill="#334155">

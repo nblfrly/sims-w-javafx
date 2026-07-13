@@ -10,6 +10,7 @@ import com.simsw.model.PreviewBarang;
 import com.simsw.model.Resep;
 import com.simsw.model.Riwayat;
 import com.simsw.util.AlertHelper;
+import com.simsw.util.SceneNavigator;
 import com.simsw.util.Session;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -33,6 +34,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 /**
  * Mengelola pengurangan stok barang berdasarkan resep dan jumlah porsi menu.
@@ -65,6 +67,23 @@ public class PenggunaanBarangController {
         tablePreview.setItems(previewItems);
 
         spJumlah.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10_000, 1));
+        cmbMenu.setConverter(new StringConverter<>() {
+            @Override
+            public String toString(Menu menu) {
+                return menu == null ? "" : menu.getNamaMenu();
+            }
+
+            @Override
+            public Menu fromString(String nama) {
+                if (nama == null || nama.isBlank()) {
+                    return null;
+                }
+                return cmbMenu.getItems().stream()
+                        .filter(menu -> menu.getNamaMenu().equalsIgnoreCase(nama.trim()))
+                        .findFirst()
+                        .orElse(null);
+            }
+        });
         loadMenu();
         btnGunakan.setDisable(true);
     }
@@ -148,6 +167,7 @@ public class PenggunaanBarangController {
 
     @FXML
     private void resetForm() {
+        cmbMenu.setValue(null);
         cmbMenu.getSelectionModel().clearSelection();
         spJumlah.getValueFactory().setValue(1);
         clearPreview();
@@ -159,9 +179,7 @@ public class PenggunaanBarangController {
     private void backDashboard() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/com/simsw/view/Dashboard.fxml"));
         Stage stage = (Stage) btnDashboard.getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Dashboard");
-        stage.show();
+        SceneNavigator.show(stage, root, "Dashboard");
     }
 
     private List<UsageItem> createUsageItems() {
@@ -188,13 +206,15 @@ public class PenggunaanBarangController {
                 throw new IllegalArgumentException("Barang pada resep tidak ditemukan.");
             }
 
-            double kebutuhan = resep.getJumlahPakai() * jumlahPorsi;
-            if (kebutuhan <= 0 || kebutuhan > Integer.MAX_VALUE) {
+            int jumlahPakai;
+            try {
+                jumlahPakai = Math.multiplyExact(resep.getJumlahPakai(), jumlahPorsi);
+            } catch (ArithmeticException exception) {
                 throw new IllegalArgumentException("Jumlah pemakaian resep tidak valid.");
             }
-
-            // Stok menggunakan bilangan bulat; pembulatan ke atas menghindari stok tercatat kurang dari pemakaian nyata.
-            int jumlahPakai = (int) Math.ceil(kebutuhan);
+            if (jumlahPakai <= 0) {
+                throw new IllegalArgumentException("Jumlah pemakaian resep tidak valid.");
+            }
             jumlahPerBarang.merge(barang.getId(), jumlahPakai, Integer::sum);
         }
 

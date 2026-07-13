@@ -2,6 +2,7 @@ package com.simsw.dao.xstream;
 
 import com.simsw.model.Resep;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.converters.SingleValueConverter;
 import com.thoughtworks.xstream.security.AnyTypePermission;
 
 import java.io.File;
@@ -19,6 +20,22 @@ public class ResepXStreamDAO {
         xstream.addPermission(AnyTypePermission.ANY);
         xstream.alias("resep", Resep.class);
         xstream.alias("resepList", List.class);
+        xstream.registerLocalConverter(Resep.class, "jumlahPakai", new SingleValueConverter() {
+            @Override
+            public boolean canConvert(Class type) {
+                return type == Integer.class || type == int.class;
+            }
+
+            @Override
+            public String toString(Object value) {
+                return String.valueOf(value);
+            }
+
+            @Override
+            public Object fromString(String value) {
+                return (int) Double.parseDouble(value);
+            }
+        });
     }
 
     // SAVE 

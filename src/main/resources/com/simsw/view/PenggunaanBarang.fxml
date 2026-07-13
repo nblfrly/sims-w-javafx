@@ -14,14 +14,14 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
-            prefHeight="700.0" prefWidth="1150.0" style="-fx-background-color: #FFFDFD;" 
+            prefHeight="700.0" prefWidth="1150.0" style="-fx-background-color: #F8FAFC;" 
             xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" 
             fx:controller="com.simsw.controller.PenggunaanBarangController">
    
    <!-- ================= HEADER WARMINDO RED ================= -->
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="75.0" spacing="15" 
-            style="-fx-background-color: #BE123C; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);" 
+            style="-fx-background-color: #C62828; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);" 
             BorderPane.alignment="CENTER">
          <padding>
             <Insets left="30.0" right="30.0" />
@@ -38,12 +38,14 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label text="Penggunaan Stok Barang" textFill="#FFE4E6">
+            <Label text="Stock Usage Management" textFill="#FFE4E6">
                <font>
                   <Font size="15.0" />
                </font>
                <style>-fx-font-weight: 500;</style>
             </Label>
+            <HBox HBox.hgrow="ALWAYS" />
+            <fx:include source="UserInfo.fxml" />
          </children>
       </HBox>
    </top>
@@ -57,7 +59,7 @@
             
             <!-- Side Transaction Panel -->
             <VBox prefWidth="320.0" spacing="16.0" 
-                  style="-fx-background-color: white; -fx-border-color: transparent #E2E8F0 transparent transparent; -fx-border-width: 0 1 0 0;">
+                  style="-fx-background-color: #ffffff; -fx-border-color: transparent #CBD5E1 transparent transparent; -fx-border-width: 0 1 0 0;">
                <padding>
                   <Insets bottom="25.0" left="22.0" right="22.0" top="25.0" />
                </padding>

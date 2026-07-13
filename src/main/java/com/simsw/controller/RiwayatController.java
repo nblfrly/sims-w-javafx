@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import com.simsw.dao.xstream.RiwayatXStreamDAO;
 import com.simsw.model.Riwayat;
+import com.simsw.util.SceneNavigator;
+import com.simsw.util.Session;
 import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -109,6 +111,11 @@ public class RiwayatController implements Initializable {
 
         loadTable();
         setupFilter();
+
+        if (Session.isLogin() && "Pegawai".equalsIgnoreCase(Session.getCurrentUser().getRole())) {
+            btnExport.setVisible(false);
+            btnExport.setManaged(false);
+        }
     }
 
     private void loadTable() {
@@ -144,13 +151,18 @@ public class RiwayatController implements Initializable {
         lblUpdate.setText(String.valueOf(update));
         lblHapus.setText(String.valueOf(hapus));
     }
+
+    public void tampilkanAktivitasHariIni() {
+        tanggalFilter.setValue(LocalDate.now());
+        applyFilter();
+    }
     
     @FXML
     private void resetFilter(ActionEvent event){
         txtCari.clear();
         aktivitasFilter.setValue("Semua");
         tanggalFilter.setValue(null);
-        tableRiwayat.setItems(masterData);
+        applyFilter();
 
     }
 
@@ -208,9 +220,7 @@ public class RiwayatController implements Initializable {
         Parent root = loader.load();
 
         Stage stage = (Stage) btnDashboard.getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Dashboard");
-        stage.show();
+        SceneNavigator.show(stage, root, "Dashboard");
     }
 
     @FXML

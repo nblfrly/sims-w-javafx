@@ -27,6 +27,8 @@ import com.simsw.dao.xstream.PegawaiXStreamDAO;
 import com.simsw.dao.mysql.PegawaiDAO;
 // import com.simsw.model.Barang;
 import com.simsw.model.Pegawai;
+import com.simsw.util.SceneNavigator;
+import com.simsw.util.Session;
 
 public class PegawaiController {
 
@@ -50,6 +52,9 @@ public class PegawaiController {
 
     @FXML
     private Button saveButton;
+
+    @FXML
+    private Button deleteButton;
 
     @FXML
     private TableView<Pegawai> pegawaiTable;
@@ -98,6 +103,10 @@ public class PegawaiController {
             saveButton.setText("Update Pegawai");
 
         });
+
+        if (isPegawaiUser()) {
+            configurePegawaiAccess();
+        }
 
         System.out.println("Load Pegawai = " + (System.currentTimeMillis() - start) + " ms");
     }
@@ -164,6 +173,10 @@ public class PegawaiController {
     // savePegawai()
     @FXML
     private void savePegawai(ActionEvent event) {
+        if (isPegawaiUser()) {
+            updateOwnPassword();
+            return;
+        }
         try {
             String nama = nameField.getText().trim();
             String username = usernameField.getText().trim();
@@ -241,6 +254,10 @@ public class PegawaiController {
 
     @FXML
     private void deletePegawai(ActionEvent event) {
+        if (isPegawaiUser()) {
+            showWarning("Anda tidak memiliki hak akses untuk menghapus akun pegawai.");
+            return;
+        }
         if (selectedPegawai == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Peringatan");
@@ -295,9 +312,78 @@ public class PegawaiController {
         Parent root = loader.load();
         Stage stage = (Stage) btnDashboard.getScene().getWindow();
 
-        stage.setScene(new Scene(root));
-        stage.setTitle("Dashboard");
-        stage.show();
+        SceneNavigator.show(stage, root, "Dashboard");
+    }
+
+    private boolean isPegawaiUser() {
+        return Session.isLogin() && "Pegawai".equalsIgnoreCase(Session.getCurrentUser().getRole());
+    }
+
+    private void configurePegawaiAccess() {
+        Pegawai userSession = Session.getCurrentUser();
+        Pegawai akunSendiri = masterData.stream()
+                .filter(pegawai -> pegawai.getId() == userSession.getId())
+                .findFirst()
+                .orElse(userSession);
+
+        selectedPegawai = akunSendiri;
+        nameField.setText(akunSendiri.getNama());
+        usernameField.setText(akunSendiri.getUsername());
+        passwordField.clear();
+        roleCombo.setValue(akunSendiri.getRole());
+
+        nameField.setDisable(true);
+        usernameField.setDisable(true);
+        roleCombo.setDisable(true);
+        searchField.setDisable(true);
+        pegawaiTable.setDisable(true);
+        deleteButton.setDisable(true);
+        passwordField.setDisable(false);
+        saveButton.setText("Ubah Password Saya");
+    }
+
+    private void updateOwnPassword() {
+        String passwordBaru = passwordField.getText().trim();
+        if (passwordBaru.isEmpty()) {
+            showWarning("Password baru wajib diisi.");
+            return;
+        }
+
+        Pegawai akunSendiri = masterData.stream()
+                .filter(pegawai -> pegawai.getId() == Session.getCurrentUser().getId())
+                .findFirst()
+                .orElse(Session.getCurrentUser());
+        akunSendiri.setPassword(passwordBaru);
+
+        if (new PegawaiXStreamDAO().updatePegawai(akunSendiri)) {
+            Session.login(akunSendiri);
+            showInformation("Password berhasil diperbarui.");
+            loadTable();
+            configurePegawaiAccess();
+        } else {
+            showError("Password gagal diperbarui.");
+        }
+    }
+
+    private void showWarning(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void showInformation(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
 

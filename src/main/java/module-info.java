@@ -4,6 +4,7 @@ module com.simsw {
     requires javafx.fxml;
     requires java.sql;
     requires xstream;
+    requires javafx.base;
 
     exports com.simsw;
     exports com.simsw.controller;

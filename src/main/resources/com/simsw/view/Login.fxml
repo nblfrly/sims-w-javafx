@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="700.0" prefWidth="1150.0" style="-fx-background-color: #F8FAFC;" 
+            xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.simsw.controller.LoginController">
+   
+   <!-- ================= HEADER WARMINDO RED ================= -->
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="75.0" spacing="15" 
+            style="-fx-background-color: #C62828; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);" 
+            BorderPane.alignment="CENTER">
+         <padding>
+            <Insets left="30.0" right="30.0" />
+         </padding>
+         <children>
+            <Label text="WarMis" textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
+               <style>-fx-font-weight: 900;</style>
+            </Label>
+            <Label text="|" textFill="#FDA4AF">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label text="Warmindo Management Information System" textFill="#FFE4E6">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <style>-fx-font-weight: 500;</style>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   
+   <!-- ================= MAIN LAYOUT BODY ================= -->
+   <center>
+      <HBox alignment="CENTER" spacing="80.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
+         </padding>
+         <children>
+            
+            <!-- ================= LEFT SIDE (TEXT ONLY - PERFECTLY CENTERED) ================= -->
+            <VBox alignment="CENTER" prefWidth="440.0" spacing="25.0">
+               <children>
+                  
+                  <!-- Title Group (WarMis & MANAGEMENT) -->
+                  <VBox alignment="CENTER" spacing="4.0">
+                     <children>
+                        <Label text="WarMis" textFill="#BE123C">
+                           <font>
+                              <Font size="54.0" />
+                           </font>
+                           <style>-fx-font-weight: 900; -fx-letter-spacing: 1px;</style>
+                        </Label>
+                        <Label text="WARMINDO MANAGEMENT" textFill="#0F172A">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <style>-fx-font-weight: 800; -fx-letter-spacing: 1.5px;</style>
+                        </Label>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Tagline Deskripsi -->
+                  <Label alignment="CENTER" text="Kelola stok pasokan inventaris, pantau audit transaksi, dan kendalikan manajemen data karyawan Warmindo dalam satu ekosistem digital terintegrasi." 
+                         textAlignment="CENTER" textFill="#64748B" wrapText="true">
+                     <font>
+                        <Font size="14.5" />
+                     </font>
+                     <style>-fx-font-weight: 500; -fx-line-spacing: 6px;</style>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+                  
+               </children>
+            </VBox>
+            
+            <!-- ================= RIGHT SIDE (LOGIN CARD) ================= -->
+            <VBox alignment="CENTER_LEFT" maxWidth="450.0" prefWidth="450.0" spacing="20.0" 
+                  style="-fx-background-color: white; -fx-background-radius: 16; -fx-border-color: #E2E8F0; -fx-border-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(15,23,42,0.04), 25, 0, 0, 10);">
+               <padding>
+                  <Insets bottom="45.0" left="40.0" right="40.0" top="45.0" />
+               </padding>
+               <children>
+                  <!-- Card Header -->
+                  <VBox spacing="4.0">
+                     <children>
+                        <Label text="Selamat Datang" textFill="#0F172A">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                           <style>-fx-font-weight: 800;</style>
+                        </Label>
+                        <Label text="Silahkan masuk menggunakan akun operasional Anda." textFill="#64748B">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <style>-fx-font-weight: 500;</style>
+                        </Label>
+                     </children>
+                  </VBox>
+                  
+                  <Region prefHeight="10.0" />
+                  
+                  <!-- Username Field Block -->
+                  <VBox spacing="6.0">
+                     <children>
+                        <Label text="Nama Pengguna / Username" textFill="#475569">
+                           <style>-fx-font-weight: 700; -fx-font-size: 13;</style>
+                        </Label>
+                        <TextField fx:id="txtUsername" prefHeight="42.0" promptText="Masukkan username Anda" 
+                                   style="-fx-background-color: #F8FAFC; -fx-border-color: #CBD5E1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 0 14 0 14; -fx-text-fill: #1E293B;" />
+                     </children>
+                  </VBox>
+                  
+                  <!-- Password Field Block -->
+                  <VBox spacing="6.0">
+                     <children>
+                        <Label text="Kata Sandi / Password" textFill="#475569">
+                           <style>-fx-font-weight: 700; -fx-font-size: 13;</style>
+                        </Label>
+                        <PasswordField fx:id="txtPassword" prefHeight="42.0" promptText="••••••••" 
+                                       style="-fx-background-color: #F8FAFC; -fx-border-color: #CBD5E1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 0 14 0 14; -fx-text-fill: #1E293B;" />
+                     </children>
+                  </VBox>
+                  
+                  <Region prefHeight="12.0" />
+                  
+                  <!-- Login Button -->
+                  <Button fx:id="btnLogin" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleLogin" prefHeight="46.0" 
+                          style="-fx-background-color: #C62828; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-size: 14px; -fx-font-weight: bold; -fx-cursor: hand;" 
+                          text="MASUK KE SISTEM" />
+               </children>
+            </VBox>
+            
+         </children>
+      </HBox>
+   </center>
+</BorderPane>

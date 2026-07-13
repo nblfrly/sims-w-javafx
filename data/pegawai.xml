@@ -1,0 +1,30 @@
+<pegawaiList>
+  <pegawai>
+    <id>1</id>
+    <nama>Nabil</nama>
+    <username>nabil</username>
+    <password>nabil123</password>
+    <role>Admin</role>
+  </pegawai>
+  <pegawai>
+    <id>2</id>
+    <nama>Adnan</nama>
+    <username>adnan</username>
+    <password>adnan123</password>
+    <role>Admin</role>
+  </pegawai>
+  <pegawai>
+    <id>4</id>
+    <nama>Almer</nama>
+    <username>almer</username>
+    <password>almer123</password>
+    <role>Pegawai</role>
+  </pegawai>
+  <pegawai>
+    <id>5</id>
+    <nama>Rapi</nama>
+    <username>rapi</username>
+    <password>rapi123</password>
+    <role>Pegawai</role>
+  </pegawai>
+</pegawaiList>

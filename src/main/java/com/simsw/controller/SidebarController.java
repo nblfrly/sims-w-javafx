@@ -6,6 +6,10 @@ import com.simsw.util.Session;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,13 +17,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /** Navigation shared by all pages that are available after login. */
 public class SidebarController {
 
     private static String activePage = "Dashboard";
-
+    @FXML private VBox sidebar;
+    @FXML private Label lblNav;
     @FXML private Button btnDashboard;
     @FXML private Button btnInventaris;
     @FXML private Button btnMenu;
@@ -29,11 +37,23 @@ public class SidebarController {
     @FXML private Button btnLogout;
     private final Map<Button, String> defaultStyles = new LinkedHashMap<>();
     private Button activeButton;
+    private static final double COLLAPSED_WIDTH = 80;
+    private static final double EXPANDED_WIDTH = 240;
 
     @FXML
     private void initialize() {
-        enableHover(btnDashboard, btnInventaris, btnMenu, btnPenggunaan, btnRiwayat, btnPegawai, btnLogout);
+
+        enableHover(btnDashboard, btnInventaris, btnMenu,
+                btnPenggunaan, btnRiwayat, btnPegawai, btnLogout);
+
         setActiveButton();
+
+        sidebar.setPrefWidth(COLLAPSED_WIDTH);
+
+        sidebar.setOnMouseEntered(e -> expandSidebar());
+        sidebar.setOnMouseExited(e -> collapseSidebar());
+
+        collapseSidebar();
     }
 
     @FXML private void openDashboard(ActionEvent event) { openPage(event, "Dashboard", "Dashboard"); }
@@ -88,6 +108,76 @@ public class SidebarController {
                 button.setStyle(defaultStyles.get(button)
                         + (isHovered ? " -fx-background-color: #FDECEC; -fx-text-fill: #9F1239;" : ""));
             });
+        }
+    }
+
+    private void expandSidebar() {
+        animateWidth(EXPANDED_WIDTH);
+
+        lblNav.setVisible(true);
+        lblNav.setManaged(true);
+
+        btnDashboard.setText("🏠   Dashboard");
+        btnInventaris.setText("📦   Inventaris");
+        btnMenu.setText("🍜   Menu Warmindo");
+        btnPenggunaan.setText("📋   Penggunaan Barang");
+        btnRiwayat.setText("🕘   Riwayat");
+        btnPegawai.setText("👥   Pegawai");
+        btnLogout.setText("↪   Keluar");
+
+        setButtonAlignment(true);
+    }
+
+    private void collapseSidebar() {
+
+        animateWidth(COLLAPSED_WIDTH);
+
+        lblNav.setVisible(false);
+        lblNav.setManaged(false);
+
+        btnDashboard.setText("🏠");
+        btnInventaris.setText("📦");
+        btnMenu.setText("🍜");
+        btnPenggunaan.setText("📋");
+        btnRiwayat.setText("🕘");
+        btnPegawai.setText("👥");
+        btnLogout.setText("↪");
+
+        setButtonAlignment(false);
+    }
+
+    private void animateWidth(double width) {
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.millis(100),
+                        new KeyValue(sidebar.prefWidthProperty(), width))
+        );
+
+        timeline.play();
+    }
+
+    private void setButtonAlignment(boolean expanded) {
+
+        String alignment = expanded ? "CENTER_LEFT" : "CENTER";
+
+        Button[] buttons = {
+            btnDashboard,
+            btnInventaris,
+            btnMenu,
+            btnPenggunaan,
+            btnRiwayat,
+            btnPegawai,
+            btnLogout
+        };
+
+        for (Button button : buttons) {
+
+            String style = button.getStyle();
+
+            style = style.replace("-fx-alignment: CENTER_LEFT;", "");
+            style = style.replace("-fx-alignment: CENTER;", "");
+
+            button.setStyle(style + "-fx-alignment: " + alignment + ";");
         }
     }
 }

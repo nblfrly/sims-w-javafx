@@ -120,7 +120,7 @@ public class SidebarController {
         btnDashboard.setText("🏠   Dashboard");
         btnInventaris.setText("📦   Inventaris");
         btnMenu.setText("🍜   Menu Warmindo");
-        btnPenggunaan.setText("📋   Penggunaan Barang");
+        btnPenggunaan.setText("📋   Penggunaan");
         btnRiwayat.setText("🕘   Riwayat");
         btnPegawai.setText("👥   Pegawai");
         btnLogout.setText("↪   Keluar");
